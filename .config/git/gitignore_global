@@ -1,0 +1,11 @@
+.ipynb_checkpoints
+.venv
+*.swo
+*.swp
+q_series*
+E_series*
+ebcflist.bcf
+qbcflist.bcf
+*.nc
+E_reuse.bcf
+q_reuse.bcf

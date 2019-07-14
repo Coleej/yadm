@@ -1,0 +1,3 @@
+function md
+  mendeleydesktop
+end

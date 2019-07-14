@@ -1,0 +1,25 @@
+global !p
+from javascript_snippets import (
+	semi, space_before_function_paren, keyword_spacing
+)
+endglobal
+
+# overwrite builtin fun snippet to add trailing semi and space padded block
+snippet fun "function (named)" b
+function ${1:function_name}`!p snip.rv = space_before_function_paren(snip)`(${2:argument}) {
+
+${VISUAL}$0
+
+}`!p snip.rv = semi(snip)`
+endsnippet
+
+snippet method "method on object instance" b
+${1:instance_name}.${2:method} =`!p snip.rv = space_before_function_paren(snip)`(${3:argument}) => {
+
+${VISUAL}$0
+
+}`!p snip.rv = semi(snip)`
+endsnippet
+
+
+

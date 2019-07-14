@@ -1,0 +1,974 @@
+" << init >> {{{ 
+silent mkspell! ~/.vim/spell/en.utf-8.add
+
+" }}}
+
+
+" << vim-plug >>  {{{
+
+if empty(glob("~/.vim/autoload/plug.vim"))
+  silent! execute '!curl --create-dirs -fsSLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+	  autocmd VimEnter * silent! PlugInstall
+endif
+
+silent! if plug#begin('~/.vim/plugged')
+
+	" UI {{{
+	Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle'}
+	Plug 'Xuyuanp/nerdtree-git-plugin'
+	Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+	" }}}
+
+
+	" asthetic {{{
+	Plug 'breuckelen/vim-resize'
+	Plug 'jszakmeister/vim-togglecursor'
+  Plug 'KabbAmine/vullScreen.vim'
+  Plug 'guns/xterm-color-table.vim'
+	Plug 'flazz/vim-colorschemes'
+	Plug 'vim-scripts/AfterColors.vim'
+	Plug 'powerman/vim-plugin-AnsiEsc'
+	" }}}
+
+
+	" functionality {{{
+	Plug 'terryma/vim-multiple-cursors'
+	Plug 'tbabej/taskwiki'
+	Plug 'chrisbra/csv.vim'
+	Plug 'zhimsel/vim-stay'
+  Plug 'Townk/vim-autoclose'
+	Plug 'nelstrom/vim-visual-star-search'
+  Plug 'xolox/vim-misc'
+	Plug 'milkypostman/vim-togglelist'
+  Plug 'tpope/vim-obsession'
+  Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-repeat'
+  Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-unimpaired'
+"	Plug 'Konfekt/FastFold'
+"	Plug 'dhruvasagar/vim-prosession'
+	" }}}
+
+
+	" utils {{{
+	
+	Plug 'rbong/vim-flog'
+	Plug 'SirVer/ultisnips'
+	Plug 'honza/vim-snippets'
+	Plug 'w0rp/ale'
+	Plug 'vim-syntastic/syntastic'
+	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'bash ~/.fzf/install --all' }
+	Plug 'junegunn/fzf.vim'
+	Plug 'Valloric/YouCompleteMe'
+	Plug 'vimwiki/vimwiki'
+	
+	" }}}
+
+
+	" LSP {{{
+	" Plug 'autozimu/LanguageClient-neovim', {
+	" 	\ 'branch': 'next',
+	" 	\ 'do': 'bash install.sh',
+	" 	\ }
+	" }}}
+
+
+	" JavaScript {{{
+	" }}}
+
+
+	" latex {{{
+	let dum = system("which latex")
+	if v:shell_error == 0
+		Plug 'lervag/vimtex'
+	endif
+	" }}}
+
+
+	" python {{{
+	let dum = system("which python")
+	if v:shell_error == 0
+		Plug 'tmhedberg/SimpylFold'
+		Plug 'davidhalter/jedi-vim'
+		Plug 'jmcantrell/vim-virtualenv'
+		Plug 'tell-k/vim-autopep8'
+	else
+		let dum = system("which python3")
+		if v:shell_error == 0
+			Plug 'tmhedberg/SimpylFold'
+			Plug 'davidhalter/jedi-vim'
+			Plug 'jmcantrell/vim-virtualenv'
+			Plug 'tell-k/vim-autopep8'
+		endif
+	endif
+	" }}}
+
+
+	" rust {{{
+	let dum = system("which rustc")
+	if v:shell_error == 0
+		Plug 'rust-lang/rust.vim'
+		Plug 'racer-rust/racer'
+	endif
+  " }}}
+
+
+	" syntax highlighting {{{
+	Plug 'leafgarland/typescript-vim'
+  Plug 'dag/vim-fish'
+	Plug 'Glench/Vim-Jinja2-Syntax'
+	" }}}
+
+call plug#end()
+endif
+
+" }}}
+
+
+" << config options >> {{{
+
+set formatoptions+=j
+set nocompatible
+set shell=/bin/bash
+let g:syntastic_shell = "/bin/bash"
+set hlsearch
+set foldmethod=syntax
+set incsearch
+silent! set belloff=all
+set smartcase
+set hidden
+set wrap linebreak
+set grepprg=grep\ -nH\ $ "Set grep to always print file-names*
+set autoindent
+set ts=2
+set sw=2
+set wildmenu
+set wildmode=full
+set history=200
+filetype plugin indent on
+syntax on
+noh
+setlocal nolist
+set listchars=tab:>-,eol:¬,trail:⋅
+
+augroup CloseLoclistWindowGroup
+	autocmd!
+	autocmd QuitPre * if empty(&buftype) | lclose | endif
+augroup END
+
+" }}}
+
+
+" << gvim >> {{{
+if has("gui_running")
+  set guioptions -=m
+  set guioptions -=T
+  set guifont=Monospace\ 12
+  set guioptions -=r
+  set guioptions -=L
+  set guioptions -=b
+endif
+
+" }}}
+
+
+"  << abbreviations >> {{{
+:iabbrev adn and
+:iabbrev waht what
+:iabbrev tehn then
+:iabbrev @@1 codyjohnson144@gmail.com
+:iabbrev @@2 cjoh296@lsu.edu
+
+" }}}
+
+
+" << editor key mappings >> {{{
+
+let mapleader=";"
+let maplocalleader="\'"
+
+" command mode
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+
+" timestamps
+nnoremap <silent> <f5> "=strftime("%c")<cr>P
+inoremap <silent> <f5> <C-R>=strftime("%c")<cr>
+
+" toggles
+set pastetoggle=<f6>  
+nnoremap <silent> <leader>D :NERDTreeToggle<CR>
+
+" movement 
+
+" search and replace
+nnoremap & :&&<cr>
+xnoremap & :&&<cr>
+
+" << terminal key mappings >> {{{
+
+if has('terminal')
+	set termwinkey=<C-W>
+	
+	nnoremap <silent> <leader>t :execute "term ++close fish -i --init-command=" . getcwd()<cr>
+	nnoremap <silent> <leader>vt :execute "vert term ++close fish -i --init-command=" . getcwd()<cr>
+
+	tnoremap ]g <C-W>:tabn<cr>
+	tnoremap [g <C-W>:tabp<cr>
+	tnoremap ]b <C-W>:bnext<cr>
+	tnoremap [b <C-W>:bprev<cr>
+	tnoremap <C-l>l <C-W><C-l>
+	tnoremap <C-h> <C-W><C-h>
+	tnoremap <C-k> <C-W><C-k>
+	tnoremap <C-j> <C-W><C-j>
+endif
+
+" }}}
+
+" << buffers >> {{{
+
+" cycle 
+nnoremap <silent> [b :bprevious<CR>
+nnoremap <silent> ]b :bnext<CR>
+nnoremap <silent> [B :bfirst<CR>
+nnoremap <silent> ]B :last<CR>
+
+" }}}
+
+" << tabs >> {{{
+
+" cycle 
+nnoremap <silent> [g :tabp<CR>
+nnoremap <silent> ]g :tabn<CR>
+nnoremap <silent> [G :tabl<CR>
+nnoremap <silent> ]G :tabfir<CR>
+
+" }}}
+
+" << windows >> {{{
+" change window
+nmap <silent> <C-h> :wincmd h<CR>
+nmap <silent> <C-k> :wincmd k<CR>
+nmap <silent> <C-j> :wincmd j<CR>
+nmap <silent> <C-l> :wincmd l<CR>
+
+" swap two windows horizontal and verical, respectively
+nmap <silent> <leader>hw <C-w>t<C-w>K
+nmap <silent> <leader>vw <C-w>t<C-w>H
+
+" close preview window
+nnoremap <silent> <leader>gk :pc!<cr>
+
+" }}}
+
+" << movement >> {{{
+" disable arrow keys
+noremap <Left> <nop>
+noremap <Up> <nop>
+noremap <Down> <nop>
+noremap <Right> <nop>
+
+" move cursor to beginning and end of line
+noremap H 0
+noremap L $
+
+" page-up and page-down
+nnoremap J <c-f>
+nnoremap K <c-b>
+
+"}}}
+
+" map escape 
+inoremap jk <esc>
+inoremap <esc> <nop>
+vnoremap jk <esc>
+vnoremap <esc> <nop>
+
+" searching
+noremap <leader>n nzz
+noremap <leader>N Nzz
+
+" Open split to edit vimrc
+nnoremap <silent> <leader>ev :split $MYVIMRC<cr>
+nnoremap <silent> <leader>vv :vsplit $MYVIMRC<cr>
+
+" Source vimrc
+nnoremap <leader>sv :source $MYVIMRC<cr> :echo "vimrc sourced"<cr>
+
+" Help
+nnoremap <leader>vh :vert help<cr>
+
+" redraw the window and disable hl
+nnoremap <silent> <c-d> :<c-u>nohlsearch<cr><c-l>
+
+" Coding bindings
+onoremap p i(
+onoremap in( :<c-u>normal! f(vi(<cr>
+onoremap il( :<c-u>normal! F)vi(<cr>
+onoremap b /return<cr>
+
+" operator Mappings"
+:onoremap in( :<c-u>normal! f(vi(<cr>
+:onoremap il( :<c-u>normal! F)vi(<cr>
+
+" }}}
+
+
+"  << plugin configs >> {{{
+
+" << fugitive >> {{{
+
+nnoremap <leader>gc :Gcommit -a<cr>
+nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gp :Gpush<cr>
+nnoremap <leader>gl :Gpull<cr>
+
+" }}}
+
+" << vim-resize >> {{{
+
+nnoremap <silent> <c-left> :CmdResizeLeft<cr>
+nnoremap <silent> <c-down> :CmdResizeDown<cr>
+nnoremap <silent> <c-up> :CmdResizeUp<cr>
+nnoremap <silent> <c-right> :CmdResizeRight<cr>
+
+" }}}
+
+" << multiple-cursors >> {{{
+
+let g:multi_cursor_use_default_mapping = 0
+let g:multi_cursor_start_word_key      = '<C-n>'
+let g:multi_cursor_select_all_word_key = '<C-b>'
+let g:multi_cursor_start_key           = 'g<C-n>'
+let g:multi_cursor_select_all_key      = 'g<C-b>'
+let g:multi_cursor_next_key            = '<C-n>'
+let g:multi_cursor_prev_key            = '<C-p>'
+let g:multi_cursor_skip_key            = '<C-x>'
+let g:multi_cursor_quit_key            = '<Esc>'
+
+" }}}
+
+" << UltiSnips >> {{{
+
+let g:UltiSnipsUsePythonVersion = 3
+let g:UltiSnipsExpandTrigger = '<c-o>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "snips"]
+let g:UltiSnipsSnippetsDir="~/.vim/snips"
+let g:UltiSnipsEditSplit="context"
+
+let g:ultisnips_javascript = {
+	\ 'keyword-spacing': 'always',
+	\ 'semi': 'always',
+	\ 'space-before-function-paren': 'always'
+\}
+
+" }}}
+
+" << FastFold >> {{{
+
+let g:fastfold_savehook = 1
+
+let g:markdown_folding = 1
+"let g:tex_fold_enabled = 1
+let g:vimsyn_folding = 'af'
+let g:xml_syntax_folding = 1
+let g:javaScript_fold = 1
+let g:sh_fold_enabled= 7
+let g:r_syntax_folding = 1
+let g:rust_fold = 1
+let g:php_folding = 1
+
+"let g:fastfold_fold_command_suffixes = ['X', 'A', 'O', 'C', 'D', 'M', 'N']
+
+" }}}
+
+" << AutoClose >>  {{{
+
+let g:AutoClosePairs_add = "$"
+
+" }}}
+
+" << jedi-vim >> {{{
+
+let g:jedi#completions_enabled = 0 " turn off for compatability with YCM
+"let g:jedi#use_splits_not_buffers = "winwidth"
+
+" }}}
+
+" << Autopep8 >> {{{
+
+let g:autopep8_disable_show_diff = 1 " diff window doesn't seem to work
+
+" }}}
+
+" << vim-airline >> {{{
+
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='murmur'
+
+" }}}
+
+" << LSP >> {{{
+
+"let g:LanguageClient_autoStart = 0
+"nnoremap <leader>lcs :LanguageClientStart<cr>
+
+"let g:LanguageClient_serverCommands = {
+"	\ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls']
+"	\ }
+
+"noremap <silent> A :call LanguageClient_textDocument_hover()<CR>
+"noremap <silent> Z :call LanguageClient_textDocument_definition()<CR>
+"noremap <silent> R :call LanguageClient_textDocument_rename()<CR>
+"noremap <silent> B :call LanugageClient_textDocument_documentSymbol()<CR>
+
+" }}}
+
+" << fzf >> {{{
+
+let g:fzf_action = {
+	\ 'ctrl-t': 'tab split',
+	\ 'ctrl-x': 'split',
+	\ 'ctrl-v': 'vsplit' }
+
+nnoremap <leader>F :FZF<cr>
+
+" }}}
+
+" << YouCompleteMe >>  {{{
+
+let g:ycm_global_ycm_extra_conf = '/home/cjohnson/.ycm_global.py'
+
+"let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_show_diagnostics_ui = 0
+
+let g:ycm_warning_symbol = '@@'
+
+let g:ycm_goto_buffer_command = 'split-or-existing-window'
+
+nnoremap <leader>jd :YcmCompleter GoTo<cr>
+nnoremap <leader>jt :YcmCompleter GoToType<cr>
+nnoremap <leader>gt :YcmCompleter GetType<cr>
+nnoremap <leader>gn :YcmCompleter GetParent<cr>
+nnoremap <leader>gu :YcmCompleter GetDoc<cr>
+
+let g:ycm_filetype_blacklist = {
+			\ 'tagbar': 1,
+			\ 'notes': 1,
+			\ 'markdown': 1,
+			\ 'netrw': 1,
+			\ 'unite': 1,
+			\ 'vimwiki': 1,
+			\ 'text': 1,
+			\ 'pandoc': 1,
+			\ 'infolog': 1,
+			\ 'mail': 1
+			\}
+
+
+
+" }}}
+
+" << ALE >> {{{
+
+let g:ale_linters = {
+	\ 'python': ['black', 'flake8'],
+	\ 'javascript': ['eslint', 'tsserver', 'prettier'],
+	\ 'typescript': ['eslint', 'tsserver'],
+	\ 'css': ['prettier'],
+	\ 'html': ['prettier'],
+	\ 'tex': ['chktex', 'lacheck']
+\}
+
+let g:ale_fixers = {
+	\ 'python': ['black',
+	\            'isort',
+	\						 'add_blank_lines_for_python_control_statements',
+	\						 'trim_whitespace'],
+	\ 'javascript': ['eslint', 'prettier'],
+	\ 'typescript': ['eslint', 'prettier'],
+	\ 'css': ['prettier'],
+	\ 'html': ['prettier'],
+	\ 'tex': ['chktex',
+	\					'lacheck',
+	\					'remove_trailing_lines',
+	\					'trim_whitespace']
+\}
+
+" python
+let g:ale_python_black_use_global = 1
+let g:ale_python_isort_use_global = 1
+
+" interesting options (set to default)
+let g:ale_cursor_detail = 0
+let g:ale_fix_on_save = 0
+let g:ale_lint_on_insert_leave = 0
+let g:ale_change_sign_column_color = 0
+let g:ale_sign_column_always = 0
+
+nmap <leader>ah <Plug>(ale_hover)
+nmap <leader>af <Plug>(ale_fix)
+nmap <leader>ad <Plug>(ale_go_to_definition)
+
+" }}}
+
+" << syntastic >> {{{
+
+"let g:syntastic_python_checkers = ["flake8"]
+let g:syntastic_javascript_checkers = []
+let g:syntastic_tex_checkers = ["lacheck", "chktex"]
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_mode_map = {
+	\ "mode": "passive",
+	\ "active_filetypes": ["latex"]
+\}
+
+nnoremap <leader>sc :SyntasticCheck<cr>
+nnoremap <leader>st :SyntasticToggleMode<cr>
+nnoremap <leader>se :Errors<cr>
+nnoremap <leader>sk :lclose<cr>
+nnoremap <leader>sr :SyntasticReset<cr>
+
+
+" vim-resize "
+" }}}
+
+" << vim-ob(pro)session >> {{{
+
+nnoremap <leader>S :Obsession<cr> 
+nnoremap <leader>O :Obsession<cr>
+nnoremap <leader>p :call fzf#run({'source': prosession#ListSessions(), 'sink': 'Prosession', 'down': '30%'})<cr>
+
+
+" }}}
+
+" << NERDTree >> {{{
+
+let g:NERDTreeWinSize = 52
+au bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" function to open NERDTree depending on filetype
+"au vimenter * call s:CheckToOpenNERDTree()
+
+function! s:CheckToOpenNERDTree() abort
+
+	" Open for python
+	if &filetype == 'python'
+		NERDTree
+	endif
+
+	" Open for c
+	if &filetype == 'c'
+		NERDTree
+	endif
+
+endfunction
+
+" user NERDTree when opening directory
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+
+" git plugin
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹ ",
+    \ "Staged"    : "✚ ",
+    \ "Untracked" : "✭ ",
+    \ "Renamed"   : "➜ ",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖ ",
+    \ "Dirty"     : "✗ ",
+    \ "Clean"     : "✔︎ ",
+    \ 'Ignored'   : '☒ ',
+    \ "Unknown"   : "?"
+    \ }
+
+
+" }}}
+
+" << vimwiki >> {{{
+
+let g:vimwiki_folding='syntax'
+
+let wiki_root = {}
+let wiki_root.path = '~/Nextcloud/vimwiki'
+let wiki_root.path_html = '~/Nextcloud/vimwiki/html'
+let wiki_root.template_path = '~/Nextcloud/vimwiki/templates/'
+let wiki_root.template_default = 'def_template'
+let wiki_root.template_ext = '.html'
+
+let wiki_phd = {}
+let wiki_phd.path = '~/Nextcloud/phd_wiki'
+let wiki_phd.path_html = '~/Nextcloud/phd_wiki/html'
+let wiki_phd.template_path = '~/Nextcloud/phd_wiki/templates/'
+let wiki_phd.template_default = 'def_template'
+let wiki_phd.template_ext = '.html'
+
+let g:vimwiki_list = [wiki_root, wiki_phd]
+
+" << external link (vfile) handler   {{{
+
+function! VimwikiLinkHandler(link)
+	let link = a:link
+	if link =~# '^vfile:'
+		let link = link[1:]
+	else
+		return 0
+	endif
+	let link_infos = vimwiki#base#resolve_link(link)
+	if link_infos.filename == ''
+		echomsg 'Vimwiki Error: Unable to resolve link!'
+		return 0
+	else
+		exe 'tabnew ' . fnameescape(link_infos.filename)
+		return 1
+	endif
+endfunction
+
+" }}}
+
+" }}}
+
+" << vimtex >> {{{
+
+let g:vimtex_view_general_viewer = 'qpdfview'
+let g:vimtex_view_general_options = '--unique @pdf\#src:@tex:@line:@col'
+let g:vimtex_view_general_options_latexmk = '--unique'
+let g:tex_flavor = 'latex'
+
+let g:vimtex_quickfix_latexlog = {
+	\ 'overfull' : 0,
+	\ 'underfull' : 0,
+	\ 'ignore_filters' : ['Marginpar on page'],
+	\}
+
+let g:vimtex_compiler_latexmk = {
+	\ 'build_dir' : './build'
+	\}
+
+let g:vimtex_fold_enabled=0
+let g:vimtex_fold_levelmarker='◊'
+
+let g:vimtex_toc_config = {
+	\ 'mode': 4,
+	\ 'fold_enable': 1,
+	\ 'hotkeys_enabled': 1,
+	\}
+
+" }}}
+
+" << rust-lang >> {{{
+
+"nnoremap <silent> <localleader>rf :RustFmt<cr>
+let g:rustfmt_autosave = 1
+
+" }}}
+
+" }}}
+
+
+" << individual files >> {{{
+
+autocmd BufNewFile,BufRead *.eslintrc set filetype=json
+autocmd BufNewFile,BufRead *.textlintrc set filetype=json
+autocmd BufNewFile,BufRead *.qgs set filetype=xml
+
+" }}}
+
+
+" << autocmds >> {{{
+if has("autocmd")
+  " Enable file type detection
+  filetype on 
+
+  " python autocmd group ------------------------------------------- {{{
+  :augroup filetype_python
+    :autocmd!
+		:au FileType vimwiki let maplocalleader="\'"
+		:au Filetype python setlocal tabstop=4
+		:au Filetype python setlocal softtabstop=4
+		:au Filetype python setlocal shiftwidth=4
+		:au Filetype python setlocal textwidth=79
+		:au Filetype python setlocal expandtab
+		:au Filetype python setlocal nu
+		:au Filetype python setlocal fileformat=unix
+		:au FileType python setlocal foldmethod=indent
+		:au FileType python setlocal completeopt-=preview
+		:au FileType python let g:SimpylFold_docstring_preview = 1
+		
+		" jedi bindings "
+		:au FileType python let g:jedi#documentation_command = "U"
+		:au FileType python let g:jedi#goto_command = "<localleader>d"
+		:au FileType python let g:jedi#goto_assignments_command = "<localleader>g"
+		:au FileType python let g:jedi#usages_command = "<localleader>n"
+
+  :augroup END
+	" }}}
+  
+  " (ba)sh autocmd group ----------------------------------------------- {{{
+  :augroup filetype_sh
+    :autocmd!
+    :au FileType sh setlocal tabstop=2
+    :au FileType sh setlocal sw=2
+  :augroup END
+	" }}}
+  
+  " tex autocmd group ------------------------------------------------- {{{
+  :augroup filetype_tex
+    :autocmd!
+		:au FileType tex let b:syntastic_check_on_open = 1
+    :au FileType tex setlocal ts=2
+    :au FileType tex setlocal sts=2
+    :au FileType tex setlocal sw=2
+		:au FileType tex setlocal spell spelllang=en_us
+		:au FileType tex setlocal nonu
+		:au FileType tex setlocal foldmethod=expr
+		:au FileType tex setlocal foldexpr=vimtex#fold#level(v:lnum)
+		:au FileType tex setlocal foldtext=vimtex#fold#text()
+		:au FileType tex nnoremap <buffer> <localleader>lf :call vimtex#fzf#run()<cr>
+		:au FileType tex nnoremap <buffer> <localleader>lh <plug>(vimtex-compile-ss)
+    :au FileType tex nnoremap <buffer> <localleader>la <plug>(vimtex-lacheck)
+    :au FileType tex nnoremap <buffer> U :VimtexDocPackage<cr>
+		:au FileType tex nnoremap <buffer> <localleader>ts i\textsuperscript{}<esc>i
+		:au FileType tex inoremap <buffer> <localleader>ts \textsuperscript{}<esc>i
+
+		:au FileType tex let g:ycm_min_num_of_chars_for_completion = 99 
+		
+		if !exists('g:ycm_semantic_triggers')
+			:au FileType tex let g:ycm_semantic_triggers = {}
+		endif
+		:au FileType tex let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme 
+
+  :augroup END
+	" }}}
+  
+  " C autocmd group ------------------------------------------- {{{
+  :augroup filetype_c
+    :autocmd!
+		:au FileType vimwiki let maplocalleader="\'"
+    :au FileType c nnoremap <silent> <buffer> <localleader>c I//<esc>
+    :au FileType c setlocal ts=2 sts=2 sw=2 expandtab
+  :augroup END
+	" }}}
+
+  " text autocmd group ---------------------------------------- {{{
+  :augroup filetype_text
+    :autocmd! 
+    :au FileType text setlocal nolist
+    :au FileType text setlocal nonu
+  :augroup END
+	" }}}
+
+  " wiki autocmd group ------------------------------------------ {{{
+  :augroup filetype_vimwiki
+    :autocmd!
+
+    " options
+		:au FileType vimwiki let maplocalleader="\'"
+    :au FileType vimwiki setlocal spell spelllang=en_us
+    :au FileType vimwiki setlocal sw=3
+    :au FileType vimwiki setlocal ts=3
+    :au FileType vimwiki setlocal nolist
+    :au FileType vimwiki setlocal nonu
+    :au FileType vimwiki let b:autopairs_enabled = 0
+
+    " type settings mappings
+    :au FileType vimwiki noremap <buffer> <localleader>R :VimwikiRenameLink<CR>
+    :au FileType vimwiki noremap <silent> <buffer> <localleader>b bi*<esc>ea*<esc>e
+    :au FileType vimwiki noremap <silent> <buffer> <localleader>i bi_<esc>ea_<esc>e
+
+		" rendering HTML
+		:au FileType vimwiki noremap <buffer> <localleader>ht :Vimwiki2HTMLBrowse<CR>
+
+    " plugin function mappings
+    :au FileType vimwiki noremap <buffer> <localleader>t :VimwikiTabnewLink<CR>
+    :au FileType vimwiki noremap <buffer> <localleader>8 :VimwikiChangeSymbolTo *<CR>
+    :au FileType vimwiki noremap <buffer> <localleader>* :VimwikiChangeSymbolInListTo *<CR>
+    :au FileType vimwiki noremap <buffer> <localleader>_ :VimwikiChangeSymbolTo -<CR>
+    :au FileType vimwiki noremap <buffer> <localleader>- :VimwikiChangeSymbolInListTo -<CR>
+    :au FileType vimwiki noremap <buffer> <localleader>3 :VimwikiChangeSymbolTo #<CR>
+    :au FileType vimwiki noremap <buffer> <localleader># :VimwikiChangeSymbolInListTo #<CR>
+		:au FileType vimwiki noremap <buffer> <localleader>wv :VimwikiVSplitLink<CR>
+		:au filetype vimwiki noremap <buffer> <localleader>ws :VimwikiSplitLink<CR>
+		
+		" markdown
+		:au filetype vimwiki vnoremap <buffer> <localleader>_ iw<esc>`<i_<esc>`> a_
+		:au filetype vimwiki nnoremap <buffer> <localleader>_ viw<esc>a_<esc>hbi_<esc>lel
+		:au filetype vimwiki vnoremap <buffer> <localleader>* iw<esc>`<i*<esc>`> a*
+		:au filetype vimwiki vnoremap	<buffer> <localleader>* viw<esc>a*<esc>hbi*<esc>lel
+		
+		" -------------------- "
+		" wiki template macros "
+		" -------------------- "
+		" literature review notes
+		:au Filetype vimwiki nnoremap <localleader>tl i= title = <cr><cr><cr>= synopsis = <cr><cr><cr>= conclusions =<cr><cr><cr>= criticisms =<cr><cr><cr>= notes =<cr>== general ==<cr>* 
+
+		" group meetings
+		:au Filetype vimwiki nnoremap <localleader>tmg i= files = <cr>[[file:~/Documents/meetings/research_group/<esc>"=strftime("%Y-%m-%d")<cr>pa/draft.odp]]<cr>[[file:~/Documents/meetings/research_group/<esc>"=strftime("%Y-%m-%d")<cr>pa/report.pdf]]<cr><cr>= notes =<cr>* 
+
+		" meetings
+		:au Filetype vimwiki nnoremap <localleader>tmi i= files = <cr>[[file:~/Documents/meetings/individual/<esc>"=strftime("%Y-%m-%d")<cr>pa/draft.odp]]<cr>[[file:~/Documents/meetings/individual/<esc>"=strftime("%Y-%m-%d")<cr>pa/report.pdf]]<cr><cr>= notes =<cr>* 
+		
+		" CoE meetings
+		:au Filetype vimwiki nnoremap <localleader>tmc i= files = <cr>[[file:~/Documents/meetings/CoE/<esc>"=strftime("%Y-%m-%d")<cr>pa/draft.odp]]<cr>[[file:~/Documents/meetings/CoE/<esc>"=strftime("%Y-%m-%d")<cr>pa/report.pdf]]<cr><cr>= notes =<cr>* 
+  :augroup END
+	" }}}
+
+  " html autocmd group --------------------------------------- {{{
+  :augroup filetype_html
+    :autocmd!
+    ":au BufWritePre *.html :normal gg=G
+    ":au FileType html setlocal sw=3
+    ":au FileType html setlocal ts=3
+		:au FileType html setlocal smarttab
+		:au FileType html setlocal smartindent
+		:au FileType html setlocal autoindent
+  :augroup END
+	" }}}
+
+	" htmldjango autocmd group --------------------------------{{{
+	:augroup filetype_htmldjango
+		:autocmd!
+		:au FileType htmldjango setlocal sw=3
+		:au FileType htmldjango setlocal ts=3
+	:augroup END
+	" }}}
+
+  " fish autocmd group ----------------------------------- {{{
+  :augroup filetype_fish
+    :autocmd!
+    :au FileType fish setlocal ts=2
+    :au FileType fish setlocal sw=2
+    :au FileType fish setlocal expandtab
+  :augroup END
+	" }}}
+  
+  " fortran autocmd group ---------------------------------- {{{
+  :augroup filetype_fortran
+    :autocmd!
+		" :au FileType fortran setlocal smarttab
+		" :au FileType fortran setlocal expandtab
+    " :au Filetype fortran setlocal tabstop=2
+		" :au FileType fortran setlocal sw=2
+    " :au FileType fortran setlocal bs=2
+    " :au FileType fortran setlocal ignorecase
+    " :au FileType fortran setlocal smartcase
+    :au FileType fortran let fortran_fold=1
+    " :au FileType fortran let fortran_fold_conditionals=1
+    " :au FileType fortran let fortran_fold_multilinecomments=1
+    :au FileType fortran let fortran_more_precise=1
+    " :au FileType fortran let fortran_have_tabs=1
+  :augroup END
+	" " }}}
+
+	" rust autocmd group ----------------------------------- {{{
+	:augroup filetype_rust
+		:autocmd!
+		:au FileType rust inoremap <buffer> <CR>a => 
+	:augroup END
+	" }}}
+
+	" markdown autcmd group ---------------------------------- {{{
+	:augroup filetype_markdown
+		:autocmd!
+		:au FileType vimwiki let maplocalleader="\'"
+		:au filetype markdown vnoremap <buffer> <localleader>_ iw<esc>`<i_<esc>`> a_
+		:au filetype markdown nnoremap <buffer> <localleader>_ viw<esc>a_<esc>hbi_<esc>lel
+		:au filetype markdown vnoremap <buffer> <localleader>* iw<esc>`<i*<esc>`> a*
+		:au filetype markdown vnoremap <buffer> <localleader>* viw<esc>a*<esc>hbi*<esc>lel
+	:augroup END
+	" }}}
+
+	" vimscript autocmd group --------------------- {{{
+	:augroup filetype_vim
+		:autocmd!
+		:au Filetype vim setlocal foldmethod=marker
+	:augroup END
+	" }}}
+	
+	" typescript ----------------------------------- {{{
+	:augroup filetype_typescript
+		:au FileType typescript setlocal smarttab
+		:au FileType typescript setlocal expandtab
+    :au Filetype typescript setlocal tabstop=4
+		:au FileType typescript setlocal shiftwidth=4
+	:augroup END
+	" }}}
+	
+	" javascript ----------------------------------- {{{
+	:augroup filetype_javascript
+		:au FileType javascript setlocal smarttab
+		:au FileType javascript setlocal autoindent
+		:au FileType javascript setlocal expandtab
+    :au Filetype javascript setlocal tabstop=4
+		:au FileType javascript setlocal shiftwidth=4
+	:augroup END
+	" }}}
+
+
+endif
+
+" }}}
+
+
+" << digraphs >> {{{
+
+" subscripts {{{
+
+execute "digraphs kb " . 0x2096 
+execute "digraphs ab " . 0x2090
+execute "digraphs eb " . 0x2091
+execute "digraphs hb " . 0x2095
+execute "digraphs ib " . 0x1D62
+execute "digraphs kb " . 0x2096
+execute "digraphs lb " . 0x2097
+execute "digraphs mb " . 0x2098
+execute "digraphs nb " . 0x2099
+execute "digraphs ob " . 0x2092
+execute "digraphs pb " . 0x209A
+execute "digraphs rb " . 0x1D63
+execute "digraphs sb " . 0x209B
+execute "digraphs tb " . 0x209C
+execute "digraphs ub " . 0x1D64
+execute "digraphs vb " . 0x1D65
+execute "digraphs xb " . 0x2093
+
+" }}}
+
+" }}}
+
+
+" << colors >> {{{
+
+hi VertSplit ctermfg=234 ctermbg=234
+hi StatusLine ctermfg=234 ctermbg=239
+hi StatusLineNC ctermfg=234 ctermbg=234
+hi StatusLineTerm ctermfg=234 ctermbg=239
+hi StatusLineTermNC ctermfg=234 ctermbg=234
+
+" pylint
+hi Search ctermfg=white ctermbg=blue
+
+" invisible characters 
+highlight NonText guifg=#4d4c42 guibg=bg
+highlight SpecialKey guifg=#4d4c42
+
+" vimwiki {{{
+
+:hi VimwikiHeader1 ctermfg=2
+:hi VimwikiHeader2 ctermfg=4
+:hi VimwikiHeader3 ctermfg=10
+:hi VimwikiHeader4 ctermfg=140
+:hi VimwikiHeader5 ctermfg=8
+:hi VimwikiHeader6 ctermfg=1
+
+" }}}

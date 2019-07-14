@@ -1,0 +1,311 @@
+" Configuration file for vim
+
+"++++++++++++++++++"
+" vim-plug section "
+"++++++++++++++++++" 
+
+call plug#begin('~/.vim/plugged')
+  Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+  Plug 'lervag/vimtex'
+  Plug 'Konfekt/FastFold'
+  Plug 'vimwiki/vimwiki'
+  Plug 'python-mode/python-mode'
+  Plug 'mattn/calendar-vim'
+  Plug 'movitto/vim-vsearch'
+  " Plug 'jiangmiao/auto-pairs'
+  Plug 'breuckelen/vim-resize'
+  " Plug 'vim-scripts/Auto-Pairs'
+call plug#end()
+
+
+"################"
+" Other settings "
+"################"
+
+" Syntax folding
+set foldmethod=syntax
+
+" Turn off all bells
+set belloff=all
+
+" Enable plugins based on filetype
+filetype plugin on
+syntax on
+
+" Set grep to always print file-names
+set grepprg=grep\ -nH\ $*
+
+" Turn line numbers on
+set nu
+
+" Turn on soft word wrapping
+set wrap linebreak list
+
+
+" Turn off menu/tool bar and Set gui font
+if has("gui_running")
+  set guioptions -=m
+  set guioptions -=T
+  set guifont=Monospace\ 13
+endif
+
+" Automatic indention
+set autoindent
+
+" Turn off search highlighting
+noh
+
+" -------- "
+" NERDTree "
+" -------- "
+autocmd vimenter * NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let g:NERDTreeWinSize = 52
+
+" ####### "
+" vimwiki "
+" ####### "
+let g:vimwiki_list = [{'path': '~/.vimwiki', 'path_html': '~/.vimwiki/html'}]
+
+
+"################"
+" vimtex options "
+"################"
+
+let g:tex_flavor = 'pdflatex'
+
+" vimtext complitation setting
+let g:vimtex_view_method = 'mupdf'
+
+" vimtex custom mappings
+nmap <localleader>lh <plug>(vimtex-compile-ss)
+nmap <localleader>la <plug>(vimtex-lacheck)
+
+
+"-------------
+" python-mode 
+"-------------
+let g:pymode_python = 'python3'
+
+
+"################"
+"  abbreviations "
+"################"
+:iabbrev adn and
+:iabbrev waht what
+:iabbrev tehn then
+:iabbrev @@1 codyjohnson144@gmail.com
+:iabbrev @@2 cjoh296@lsu.edu
+
+
+"######################"
+" generic key mappings "
+"######################"
+let mapleader = "\\"
+let maplocalleader = "`"
+
+" miscellaneous 
+nnoremap <leader>L :set list!<CR>
+set listchars=tab:▶\ ,eol:¬
+
+" Toggles
+nnoremap <leader>N :NERDTreeToggle<CR>
+nnoremap <leader>n :set hlsearch!<CR>
+nnoremap <leader>nn :set nu!<CR>
+nnoremap <localleader>cal :Calendar<CR>
+
+" Cycle buffers
+nnoremap <leader><Tab> :bnext!<CR>
+nnoremap <leader><S-Tab> :bprevious!<CR>
+
+" Change windows
+nmap <silent> <C-h> :wincmd h<CR>
+nmap <silent> <C-k> :wincmd k<CR>
+nmap <silent> <C-j> :wincmd j<CR>
+nmap <silent> <C-l> :wincmd l<CR>
+
+" Resize split windows
+"nnoremap <M-l> <C-w><
+"nnoremap <M-j> <C-w>+
+"nnoremap <M-k> <C-w>-
+"nnoremap <M-h> <C-w>>
+
+" disable arrow keys
+noremap <Left> <nop>
+noremap <Up> <nop>
+noremap <Down> <nop>
+noremap <Right> <nop>
+
+" map escape 
+inoremap jk <esc>l
+inoremap <esc> <nop>
+vnoremap jk <esc>
+vnoremap <esc> <nop>
+
+" move cursor to beginning and end of line
+noremap H 0
+noremap L $
+
+" page-up and page-down
+nnoremap J <c-f>
+nnoremap K <c-b>
+
+" wrap quotes around current word
+vnoremap <leader>" iw<esc>`<i"<esc>`> a"
+vnoremap <leader>' iw<esc>`<i'<esc>`> a'
+nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
+nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
+
+" move line of text up a line
+noremap _ d$k<S-p>0
+
+" move line of text down a line
+noremap - d$ p0
+
+" Capitalize word under cursor in insert-mode
+inoremap <C-u> <esc> viw<S-u>
+nnoremap <C-u> viw<S-u>
+
+" Open split to edit vimrc
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+
+" Source vimrc
+nnoremap <leader>sv :source $MYVIMRC<cr> :echo "vimrc sourced"<cr>
+
+" Coding bindings
+onoremap p i(
+onoremap in( :<c-u>normal! f(vi(<cr>
+onoremap il( :<c-u>normal! F)vi(<cr>
+onoremap b /return<cr>
+
+"##################"
+" Operator Mappings"
+"##################"
+:onoremap in( :<c-u>normal! f(vi(<cr>
+:onoremap il( :<c-u>normal! F)vi(<cr>
+
+"###################"
+" Filetype settings "
+"###################"
+
+if has("autocmd")
+  " Enable file type detection
+  filetype on 
+
+  " Python
+  :augroup filetype_python
+    :autocmd!
+    :au FileType python set completeopt=menu
+    :au FileType python noremap <buffer> <localleader>li :PymodeLintToggle<CR>
+    :au FileType python nnoremap <buffer> <localleader>k <C-w>z
+    :au FileType python nunmap <buffer> K
+    :au FileType python nnoremap <buffer> <localleader>d :call pymode#doc#find()<CR>
+    :au FileType python vnoremap <buffer> <localleader>d :<C-U>call pymode#doc#show(@*)<CR>
+    :au FileType python nnoremap <buffer> <localleader>c I#<space><esc>
+    :au FileType python let g:pymode_rope_goto_definition_cmd = 'e'
+  :augroup END
+
+  " (ba)sh
+  :augroup filetype_sh
+    :autocmd!
+    :au FileType sh nnoremap <buffer> <localleader>c I#<space><esc>
+    :au FileType sh set tabstop=2
+    :au FileType sh set sw=2
+  :augroup END
+
+  " Latex
+  let g:vimtex_quickfix_open_on_warning=0
+  :augroup filetype_latex
+    :autocmd!
+    :au FileType tex setlocal spell spelllang=en_us
+  :augroup END
+  " C
+  :augroup filetype_c
+    :autocmd!
+    :au FileType c nnoremap <buffer> <localleader>c I//<esc>
+    :au FileType c setlocal ts=2 sts=2 sw=2 expandtab
+  :augroup END
+
+  " txt
+  :augroup filetype_txt
+    :autocmd! 
+    :au FileType txt setlocal spell
+    :au FileType txt setlocal nolist
+    :au FileType txt setlocal nonu
+  :augroup END
+
+  " wiki
+  :augroup filetype_vimwiki
+    :autocmd!
+    :au FileType vimwiki setlocal spell spelllang=en_us
+    :au FileType vimwiki let b:autopairs_enabled=0
+    :au FileType vimwiki setlocal sw=3
+    :au FileType vimwiki setlocal ts=3
+    :au FileType vimwiki setlocal nolist
+    :au FileType vimwiki setlocal nonu
+  :augroup END
+
+  " html
+  :augroup filetype_html
+    :autocmd!
+    :au BufWritePre *.html :normal gg=G
+    :au FileType html setlocal sw=3
+    :au FileType html setlocal ts=3
+  :augroup END
+
+endif
+
+"##########"
+" Digraphs "
+"##########"
+" subscripts "
+execute "digraphs kb " . 0x2096 
+execute "digraphs ab " . 0x2090
+execute "digraphs eb " . 0x2091
+execute "digraphs hb " . 0x2095
+execute "digraphs ib " . 0x1D62
+execute "digraphs kb " . 0x2096
+execute "digraphs lb " . 0x2097
+execute "digraphs mb " . 0x2098
+execute "digraphs nb " . 0x2099
+execute "digraphs ob " . 0x2092
+execute "digraphs pb " . 0x209A
+execute "digraphs rb " . 0x1D63
+execute "digraphs sb " . 0x209B
+execute "digraphs tb " . 0x209C
+execute "digraphs ub " . 0x1D64
+execute "digraphs vb " . 0x1D65
+execute "digraphs xb " . 0x2093
+
+" ------ "
+" cursor "
+" ------ "
+if has("autocmd")
+  au VimEnter,InsertLeave * silent execute '!echo -ne "\e[1 q"' | redraw!
+  au InsertEnter,InsertChange *
+\ if v:insertmode == 'i' | 
+\   silent execute '!echo -ne "\e[5 q"' | redraw! |
+\ elseif v:insertmode == 'r' |
+\   silent execute '!echo -ne "\e[3 q"' | redraw! |
+\ endif
+au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
+endif
+
+
+"##############"
+" Color Scheme "
+"##############"
+"
+colorscheme desert
+
+" Invisible Character Color
+highlight NonText guifg=#4d4c42 guibg=bg
+highlight SpecialKey guifg=#4d4c42
+
+" Vimwiki
+:hi VimwikiHeader1 guifg=#FF0000
+:hi VimwikiHeader2 guifg=#FFFF00
+:hi VimwikiHeader3 guifg=#6666FF
+:hi VimwikiHeader4 guifg=#FF00FF
+:hi VimwikiHeader5 guifg=#00FFFF
+:hi VimwikiHeader6 guifg=#FFFF00

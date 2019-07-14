@@ -1,0 +1,16 @@
+{
+	"parserOptions": {
+		"ecmaVersion": 6,
+		"impliedStrict": true
+	},
+	"env": {
+		"es6": true,
+		"browser": true,
+		"node": true
+	},
+	"extends": "eslint:all",
+	"rules": {
+		"one-var": "off",
+		"no-console": "off"
+	}
+}

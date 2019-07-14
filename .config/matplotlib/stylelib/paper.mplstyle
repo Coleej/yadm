@@ -1,0 +1,9 @@
+font.family: serif
+font.serif: Times New Roman
+font.size: 10
+
+lines.linewidth: 0.5
+
+figure.figsize: 16.0, 9.0
+
+savefig.bbox: tight
