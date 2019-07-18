@@ -1,0 +1,7 @@
+trih-*.def
+trih-*.dat
+trim-*.def
+trim-*.dat
+wavm-*.def
+wavm-*.dat
+*.nc
