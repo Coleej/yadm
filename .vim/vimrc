@@ -1,5 +1,5 @@
 " << init >> {{{ 
-silent mkspell! ~/.vim/spell/en_us.utf-8.add
+silent mkspell! ~/.vim/spell/en.utf-8.add
 
 " }}}
 
@@ -152,7 +152,6 @@ syntax on
 noh
 setlocal nolist
 set listchars=tab:>-,eol:¬,trail:⋅
-set spelllang=en_us
 
 augroup CloseLoclistWindowGroup
 	autocmd!
