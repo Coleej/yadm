@@ -15,9 +15,12 @@ silent! if plug#begin('~/.vim/plugged')
 
 	" UI {{{
 	Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle'}
-	Plug 'Xuyuanp/nerdtree-git-plugin'
 	Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
+	" the git plugin is breaking on nvim
+	if has('nvim') == 0
+		Plug 'Xuyuanp/nerdtree-git-plugin'
+	endif
 	" }}}
 
 
@@ -178,6 +181,7 @@ endif
 :iabbrev adn and
 :iabbrev waht what
 :iabbrev tehn then
+:iabbrev strom storm
 :iabbrev @@1 codyjohnson144@gmail.com
 :iabbrev @@2 cjoh296@lsu.edu
 
@@ -281,9 +285,11 @@ nnoremap K <c-b>
 "}}}
 
 " map escape 
-inoremap jk <esc>
+"inoremap jk <esc>
+inoremap ;; <esc>
 inoremap <esc> <nop>
-vnoremap jk <esc>
+"noremap jk <esc>
+vnoremap ;; <esc>
 vnoremap <esc> <nop>
 
 " searching

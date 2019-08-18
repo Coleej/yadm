@@ -4,7 +4,7 @@
 guake --rename-tab="operate"
 
 # create new tab for ipython
-guake --new-tab='cd "/tmp"'
+guake --new-tab='/tmp'
 guake --rename-current-tab="ipython"
 guake --execute="vf activate ipython"
 guake --execute="ipython --profile=work"
