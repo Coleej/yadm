@@ -1,5 +1,4 @@
-# fish theme: modified goddy
-
+# git functions
 function _git_branch_name
   echo (command git symbolic-ref HEAD ^/dev/null | sed -e 's|^refs/heads/||')
 end
@@ -18,8 +17,9 @@ function _user_host
   echo -n (hostname|cut -d . -f 1)ˇ$USER (set color normal)
 end
 
+# fish prompt
 function fish_prompt
-  set fish_greeting
+	set fish_greeting
   set -l cyan (set_color -o cyan)
   set -l yellow (set_color -o yellow)
   set -l red (set_color -o red)
@@ -29,10 +29,21 @@ function fish_prompt
   set -l green (set_color -o green)
   set -l normal (set_color normal)
 
+  set -l darkblue (set_color 000087)
+  set -l springgreen (set_color -o 00875f)
+  set -l darkred (set_color -o 870000)
+  set -l skyblue (set_color -o 87d7ff)
+  set -l royalblue (set_color -o 5f5fff)
+  set -l deeppink (set_color -o af005f)
+  set -l paleturquoise (set_color 5f8787)
+
+  # add newline before new prompts
+  #  echo -e ''
+
   # change color by hostname
   switch (hostname)
     case mobile
-      set -g host_color $green
+      set -g host_color $paleturquoise
     case dell-desk
       set -g host_color $blue
     case media
@@ -45,7 +56,7 @@ function fish_prompt
       set -g host_color $yellow
   end
 
-  set -l cwd $cyan(basename (prompt_pwd))
+  set -l cwd $deeppink(prompt_pwd)
 
   # output the prompt, left to right:
   if set -q VIRTUAL_ENV
@@ -53,7 +64,7 @@ function fish_prompt
   end
   
   # display 'user@host:'
-  echo -n -s $green (whoami) @ $host_color (hostname|cut -d . -f 1) ": "
+  echo -n -s $skyblue (whoami) @ $host_color (hostname|cut -d . -f 1) ": "
 
   # display the current directory name:
   echo -n -s $cwd $normal
@@ -63,14 +74,13 @@ function fish_prompt
     set -l git_branch '[' (_git_branch_name) ']'
 
     if [ (_is_git_dirty) ]
-      set git_info $red $git_branch "×"
+      set git_info $darkred $git_branch "✗"
     else
-      set git_info $green $git_branch
+      set git_info $springgreen $git_branch "✓"
     end
     echo -n -s ' ' $git_info $normal
   end
 
   # terminate with a nice prompt char:
-  echo -n -s ' » ' $normal
-
+  echo -n -s -e '\n∮ ' $normal
 end

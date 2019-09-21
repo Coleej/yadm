@@ -150,6 +150,7 @@ set sw=2
 set wildmenu
 set wildmode=full
 set history=200
+set diffopt+=vertical,indent-heuristic
 filetype plugin indent on
 syntax on
 noh
@@ -216,7 +217,7 @@ xnoremap & :&&<cr>
 if has('terminal')
 	set termwinkey=<C-W>
 	
-	nnoremap <silent> <leader>t :execute "term ++close fish -i --init-command=" . getcwd()<cr>
+	nnoremap <silent> <leader>t :execute "bel term ++rows=15 ++close fish -i --init-command=" . getcwd()<cr>
 	nnoremap <silent> <leader>vt :execute "vert term ++close fish -i --init-command=" . getcwd()<cr>
 
 	tnoremap ]g <C-W>:tabn<cr>
@@ -651,10 +652,17 @@ let g:vimtex_view_general_options = '--unique @pdf\#src:@tex:@line:@col'
 let g:vimtex_view_general_options_latexmk = '--unique'
 let g:tex_flavor = 'latex'
 
+let g:vimtex_quickfix_mode = 2
+let g:vimtex_quickfix_autoclose_after_keystrokes = 3
+
 let g:vimtex_quickfix_latexlog = {
 	\ 'overfull' : 0,
 	\ 'underfull' : 0,
 	\ 'ignore_filters' : ['Marginpar on page'],
+	\ 'packages' : {
+  \		'default': 1,
+	\		'hyperref': 0,
+	\	},
 	\}
 
 let g:vimtex_compiler_latexmk = {
@@ -747,7 +755,15 @@ if has("autocmd")
 		:au FileType tex nnoremap <buffer> <localleader>ts i\textsuperscript{}<esc>i
 		:au FileType tex inoremap <buffer> <localleader>ts \textsuperscript{}<esc>i
 
-		:au FileType tex let g:ycm_min_num_of_chars_for_completion = 99 
+		:au FileType tex let g:ycm_min_num_of_chars_for_completion = 99
+
+		" manuscript editting
+		:au FileType tex let b:surround_99 = "{\\color{red}\\sout{ \r }}"
+		:au FileType tex let b:surround_97 = "{\\color{green} \r }"
+		
+		" paste/insert in red strikeout text
+		:au FileType tex nnoremap <buffer> <localleader>pc :<c-u>normal i{\color{red}\sout{ ;;P<cr>
+		:au FileType tex nnoremap <buffer> <localleader>ic :<c-u>normal i{\color{red}\sout{  <cr>
 		
 		if !exists('g:ycm_semantic_triggers')
 			:au FileType tex let g:ycm_semantic_triggers = {}

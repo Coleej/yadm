@@ -2,8 +2,7 @@ snippet fig "Figure environment (custom)" b
 \begin{figure}[${1:htpb}]
 	\centering
 	\includegraphics[width=${2:0.8\linewidth}]{${3:name.ext}}
-	\caption{$4}
-	\label{fig:${3/figures\/(\w+)\.\w+/$1/}}
+	\caption{$4}\label{fig:${3/figures\/(\w+)\.\w+/$1/}}
 \end{figure}
 $0
 endsnippet
