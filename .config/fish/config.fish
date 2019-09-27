@@ -24,6 +24,14 @@ if not functions -q fisher
     fish -c fisher
 end
 
+# install fzf if not present
+which fzf > /dev/null 2>&1
+if test $status -ne 0
+  git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
+  $HOME/.fzf/install
+end
+
+
 # custom home for fisher
 set -g fisher_path $XDG_CONFIG_HOME/fisher_packages
 set fish_function_path $fish_function_path[1] $fisher_path/functions $fish_function_path[2..-1]
