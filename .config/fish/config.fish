@@ -25,11 +25,11 @@ if not functions -q fisher
 end
 
 # install fzf if not present
-which fzf > /dev/null 2>&1
-if test $status -ne 0
-  git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
-  $HOME/.fzf/install
-end
+#which fzf > /dev/null 2>&1
+#if test $status -ne 0
+#  git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
+#  $HOME/.fzf/install --all
+#end
 
 
 # custom home for fisher
