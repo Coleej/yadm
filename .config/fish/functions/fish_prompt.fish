@@ -53,7 +53,7 @@ function fish_prompt
     case arch-box
       set -g host_color $cyan
     case '*'
-      set -g host_color $yellow
+      set -g host_color $royalblue
   end
 
   set -l cwd $deeppink(prompt_pwd)
