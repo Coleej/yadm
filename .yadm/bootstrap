@@ -6,4 +6,8 @@ if ! test -x $(which fzf); then
 	~/.fzf/install --all
 fi
 
+# add ppas
+sudo add-apt-repository ppa:jonathonf/vim
+sudo apt-add-repository ppa:fish-shell/release-3
+
 # vim: ft=bash

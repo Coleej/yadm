@@ -658,7 +658,10 @@ let g:vimtex_quickfix_autoclose_after_keystrokes = 3
 let g:vimtex_quickfix_latexlog = {
 	\ 'overfull' : 0,
 	\ 'underfull' : 0,
-	\ 'ignore_filters' : ['Marginpar on page'],
+	\ 'ignore_filters' : [
+	\		'Marginpar on page',
+	\		'.*float specifier changed.*'
+	\	],
 	\ 'packages' : {
   \		'default': 1,
 	\		'hyperref': 0,
