@@ -10,4 +10,17 @@ fi
 sudo add-apt-repository ppa:jonathonf/vim
 sudo apt-add-repository ppa:fish-shell/release-3
 
+sudo apt-get update
+sudo apt-get install -y fish vim
+
+# fish
+chsh -s "$(which fish)" $USER
+
+# fisher
+if [ -z ${XDG_CONFIG_HOME+x} ]; then
+	XDG_CONFIG_HOME="~/.config"
+fi
+curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
+fish -c fisher
+
 # vim: ft=bash
