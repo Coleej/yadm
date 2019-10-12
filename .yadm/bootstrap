@@ -1,5 +1,11 @@
 #/usr/bin/env bash
 
+sudo apt-get install curl
+
+if [ -z ${XDG_CONFIG_HOME+x} ]; then
+	XDG_CONFIG_HOME="~/.config"
+fi
+
 # setup fzf
 if ! test -x $(which fzf); then
 	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
@@ -7,20 +13,29 @@ if ! test -x $(which fzf); then
 fi
 
 # add ppas
-sudo add-apt-repository ppa:jonathonf/vim
-sudo apt-add-repository ppa:fish-shell/release-3
+PPA_VIM="jonathonf/vim"
+PPA_FISH="fish-shell/release-3"
 
-sudo apt-get update
-sudo apt-get install -y fish vim
+if ! grep -q "^deb .*${PPA_VIM}" /etc/apt/sources.list /etc/apt/sources.list.d/*; then
+	sudo add-apt-repository "ppa:jonathonf/vim"
+	sudo apt-get update
+	sudo apt-get install -y vim
+fi
+
+if ! grep -q "^deb .*${PPA_FISH}" /etc/apt/sources.list /etc/apt/sources.list.d/*; then
+	sudo apt-add-repository "ppa:fish-shell/release-3"
+	sudo apt-get update
+	sudo apt-get install -y fish
+fi
 
 # fish
-chsh -s "$(which fish)" $USER
-
-# fisher
-if [ -z ${XDG_CONFIG_HOME+x} ]; then
-	XDG_CONFIG_HOME="~/.config"
+if test -x $(which fish); then
+	chsh -s "$(which fish)" $USER
+	curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
+	fish -c fisher
+	fish -c "fisher add jethrokuan/fzf"
+	fish -c "fisher add jethrokuan/z"
+	fish -c "fisher add laughedelic/pisces"
 fi
-curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
-fish -c fisher
 
 # vim: ft=bash
