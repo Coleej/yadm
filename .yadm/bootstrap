@@ -38,4 +38,10 @@ if test -x $(which fish); then
 	fish -c "fisher add laughedelic/pisces"
 fi
 
+# vim
+if test -x $(which vim); then
+	sudo apt-get install -y python python-dev cmake
+fi
+
+
 # vim: ft=bash

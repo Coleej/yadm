@@ -1,8 +1,12 @@
 # Gustav (2008)
 gustav_lf = dt.datetime(2008, 9, 1, 15)
 
-# model setup specifics
-gustav_Itdate    = dt.datetime(2008, 7, 25)
+# D3d model setup specifics
+gustav_d3d_Itdate = dt.datetime(2008, 7, 25)
+gustav_d3d_tstart = gustav_d3d_Itdate + pd.to_timedelta(4.8960e4, 'min')
+gustav_d3d_tstop  = gustav_d3d_Itdate + pd.to_timedelta(6.0480e4, 'min')
+
+# XBeach model
 gustav_xb_start  = dt.datetime(2008, 8, 31, 6, 0, 0)  
 gustav_xb_stop   = dt.datetime(2008, 9, 2, 12, 0, 0)  
 
