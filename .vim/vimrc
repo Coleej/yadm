@@ -449,7 +449,9 @@ nnoremap <leader>F :FZF<cr>
 
 " << YouCompleteMe >>  {{{
 
-let g:ycm_global_ycm_extra_conf = '/home/cjohnson/.ycm_global.py'
+let g:ycm_global_ycm_extra_conf = '/home/cody/.ycm_global.py'
+
+let g:ycm_key_invoke_completion = '<c-space>'
 
 "let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 0
@@ -721,7 +723,7 @@ if has("autocmd")
 		:au FileType python setlocal foldmethod=indent
 		:au FileType python setlocal completeopt-=preview
 		:au FileType python let g:SimpylFold_docstring_preview = 1
-		
+
 		" jedi bindings "
 		:au FileType python let g:jedi#documentation_command = "U"
 		:au FileType python let g:jedi#goto_command = "<localleader>d"

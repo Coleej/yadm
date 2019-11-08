@@ -5,5 +5,3 @@ font.size: 8
 lines.linewidth: 0.5
 
 figure.figsize: 7.48, 4.208 
-
-savefig.bbox: tight
