@@ -199,8 +199,11 @@ cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 
 " timestamps
-nnoremap <silent> <f5> "=strftime("%c")<cr>P
-inoremap <silent> <f5> <C-R>=strftime("%c")<cr>
+nnoremap <silent> <s-f5> "=strftime("%c")<cr>P
+inoremap <silent> <s-f5> <C-R>=strftime("%c")<cr>
+
+nnoremap <silent> <f5> "=strftime("%d %b %Y")<cr>P
+inoremap <silent> <f5> <C-R>=strftime("%d %b %Y")<cr> 
 
 " toggles
 set pastetoggle=<f6>  
@@ -451,8 +454,6 @@ nnoremap <leader>F :FZF<cr>
 
 let g:ycm_global_ycm_extra_conf = '/home/cody/.ycm_global.py'
 
-let g:ycm_key_invoke_completion = '<c-space>'
-
 "let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 0
 let g:ycm_add_preview_to_completeopt = 1
@@ -493,7 +494,7 @@ let g:ale_linters = {
 	\ 'typescript': ['eslint', 'tsserver'],
 	\ 'css': ['prettier'],
 	\ 'html': ['prettier'],
-	\ 'tex': ['chktex', 'lacheck']
+	\ 'tex': ['chktex', 'lacheck', 'redpen']
 \}
 
 let g:ale_fixers = {
@@ -505,7 +506,8 @@ let g:ale_fixers = {
 	\ 'typescript': ['eslint', 'prettier'],
 	\ 'css': ['prettier'],
 	\ 'html': ['prettier'],
-	\ 'tex': ['chktex',
+	\ 'tex': ['latexindent',
+	\					'chktex',
 	\					'lacheck',
 	\					'remove_trailing_lines',
 	\					'trim_whitespace']
