@@ -36,7 +36,7 @@ silent! if plug#begin('~/.vim/plugged')
 
 
 	" functionality {{{
-	Plug 'terryma/vim-multiple-cursors'
+"	Plug 'terryma/vim-multiple-cursors'
 	Plug 'tbabej/taskwiki'
 	Plug 'chrisbra/csv.vim'
 	Plug 'zhimsel/vim-stay'
@@ -307,6 +307,12 @@ nnoremap <silent> <leader>vv :vsplit $MYVIMRC<cr>
 " Source vimrc
 nnoremap <leader>sv :source $MYVIMRC<cr> :echo "vimrc sourced"<cr>
 
+" edit redpen conf
+nnoremap <leader>er :split $HOME/.local/opt/redpen-distribution-1.10.3/conf/redpen-conf-en.xml<cr>
+nnoremap <leader>vr :vsplit $HOME/.local/opt/redpen-distribution-1.10.3/conf/redpen-conf-en.xml<cr>
+
+
+
 " Help
 nnoremap <leader>vh :vert help<cr>
 
@@ -494,7 +500,8 @@ let g:ale_linters = {
 	\ 'typescript': ['eslint', 'tsserver'],
 	\ 'css': ['prettier'],
 	\ 'html': ['prettier'],
-	\ 'tex': ['chktex', 'lacheck', 'redpen']
+	\ 'tex': ['chktex','lacheck'],
+	\ 'vimwiki': []
 \}
 
 let g:ale_fixers = {
@@ -507,8 +514,6 @@ let g:ale_fixers = {
 	\ 'css': ['prettier'],
 	\ 'html': ['prettier'],
 	\ 'tex': ['latexindent',
-	\					'chktex',
-	\					'lacheck',
 	\					'remove_trailing_lines',
 	\					'trim_whitespace']
 \}
@@ -679,11 +684,6 @@ let g:vimtex_compiler_latexmk = {
 let g:vimtex_fold_enabled=0
 let g:vimtex_fold_levelmarker='◊'
 
-let g:vimtex_toc_config = {
-	\ 'mode': 4,
-	\ 'fold_enable': 1,
-	\ 'hotkeys_enabled': 1,
-	\}
 
 " }}}
 
@@ -763,6 +763,9 @@ if has("autocmd")
 		:au FileType tex inoremap <buffer> <localleader>ts \textsuperscript{}<esc>i
 
 		:au FileType tex let g:ycm_min_num_of_chars_for_completion = 99
+
+		" custom ToC for vimtex
+		au FileType tex call CreateTocs()
 
 		" manuscript editting
 		:au FileType tex let b:surround_99 = "{\\color{red}\\sout{ \r }}"
@@ -945,6 +948,42 @@ if has("autocmd")
 
 
 endif
+
+" }}}
+
+
+" << custom funcs >> {{{
+
+" create custom ToCs for vimtex
+function CreateTocs()
+	let g:custom_toc1 = vimtex#toc#new({
+			\ 'mode': 4,
+			\ 'fold_enable': 1,
+			\ 'layer_status': {
+			\		'content': 1,
+			\		'label': 0,
+			\		'include': 0,
+			\		'todo': 0
+			\	},
+			\ 'layer_keys': {
+			\		'content': 'C',
+			\		'label': 'L',
+			\		'inlcude': 'I'
+			\	},
+			\	'show_help': 1,
+			\})
+	nnoremap <silent> <localleader>ct :call g:custom_toc1.open()<cr>
+
+	let g:custom_toc2 = vimtex#toc#new({
+			\ 'mode': 4,
+			\ 'fold_enable': 1,
+			\ 'hotkeys_enabled': 1,
+			\ 'layers' : ['todo'],
+			\	'show_help': 1,
+			\ 'todo_sorted': 1
+			\})
+	nnoremap <silent> <localleader>cT :call g:custom_toc2.open()<cr>
+endfunction
 
 " }}}
 
