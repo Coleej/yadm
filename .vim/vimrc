@@ -515,7 +515,8 @@ let g:ale_fixers = {
 	\ 'html': ['prettier'],
 	\ 'tex': ['latexindent',
 	\					'remove_trailing_lines',
-	\					'trim_whitespace']
+	\					'trim_whitespace'],
+	\ 'sh': ['shfmt', 'trim_whitespace']
 \}
 
 " python
@@ -755,7 +756,7 @@ if has("autocmd")
 		:au FileType tex setlocal foldmethod=expr
 		:au FileType tex setlocal foldexpr=vimtex#fold#level(v:lnum)
 		:au FileType tex setlocal foldtext=vimtex#fold#text()
-		:au FileType tex nnoremap <buffer> <localleader>lf :call vimtex#fzf#run()<cr>
+		:au FileType tex nnoremap <buffer> <localleader>ft :call vimtex#fzf#run()<cr>
 		:au FileType tex nnoremap <buffer> <localleader>lh <plug>(vimtex-compile-ss)
     :au FileType tex nnoremap <buffer> <localleader>la <plug>(vimtex-lacheck)
     :au FileType tex nnoremap <buffer> U :VimtexDocPackage<cr>

@@ -2,6 +2,7 @@
 
 # variables
 set -x XDG_CONFIG_HOME $HOME/.config
+set -x XDG_DATA_DIRS $XDG_DATA_DIRS:/var/lib/snapd/desktop
 set -x VIRTUALFISH_DEFAULT_PYTHON "/usr/bin/python3"
 set -x PROJECT_HOME "~/Projects"
 
