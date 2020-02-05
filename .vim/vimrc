@@ -630,7 +630,14 @@ let wiki_phd.template_path = '~/Nextcloud/phd_wiki/templates/'
 let wiki_phd.template_default = 'def_template'
 let wiki_phd.template_ext = '.html'
 
-let g:vimwiki_list = [wiki_root, wiki_phd]
+let wiki_erdc = {}
+let wiki_erdc.path = '~/Nextcloud/erdc_wiki'
+let wiki_erdc.path_html = '~/Nextcloud/erdc_wiki/html'
+let wiki_erdc.template_path = '~/Nextcloud/erdc_wiki/templates/'
+let wiki_erdc.template_default = 'def_template'
+let wiki_erdc.template_ext = '.html'
+
+let g:vimwiki_list = [wiki_root, wiki_phd, wiki_erdc]
 
 " << external link (vfile) handler   {{{
 
@@ -756,7 +763,7 @@ if has("autocmd")
 		:au FileType tex setlocal foldmethod=expr
 		:au FileType tex setlocal foldexpr=vimtex#fold#level(v:lnum)
 		:au FileType tex setlocal foldtext=vimtex#fold#text()
-		:au FileType tex nnoremap <buffer> <localleader>ft :call vimtex#fzf#run()<cr>
+		:au FileType tex nnoremap <buffer> <localleader>cf :call vimtex#fzf#run()<cr>
 		:au FileType tex nnoremap <buffer> <localleader>lh <plug>(vimtex-compile-ss)
     :au FileType tex nnoremap <buffer> <localleader>la <plug>(vimtex-lacheck)
     :au FileType tex nnoremap <buffer> U :VimtexDocPackage<cr>

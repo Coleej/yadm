@@ -1,7 +1,7 @@
 font.family: serif
 font.serif: Times New Roman
-font.size: 8
+font.size: 18
 
-lines.linewidth: 0.5
+lines.linewidth: 1.25
 
-figure.figsize: 7.48, 4.208 
+figure.figsize: 16, 9
