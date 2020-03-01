@@ -44,4 +44,4 @@ if test -x $(which vim); then
 fi
 
 
-# vim: ft=bash
+# vim: ft=sh
