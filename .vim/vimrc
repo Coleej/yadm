@@ -36,7 +36,6 @@ silent! if plug#begin('~/.vim/plugged')
 
 
 	" functionality {{{
-	Plug 'terryma/vim-multiple-cursors'
 	Plug 'tbabej/taskwiki'
 	Plug 'chrisbra/csv.vim'
 	Plug 'zhimsel/vim-stay'
@@ -349,20 +348,6 @@ nnoremap <silent> <c-left> :CmdResizeLeft<cr>
 nnoremap <silent> <c-down> :CmdResizeDown<cr>
 nnoremap <silent> <c-up> :CmdResizeUp<cr>
 nnoremap <silent> <c-right> :CmdResizeRight<cr>
-
-" }}}
-
-" << multiple-cursors >> {{{
-
-let g:multi_cursor_use_default_mapping = 0
-let g:multi_cursor_start_word_key      = '<C-n>'
-let g:multi_cursor_select_all_word_key = '<C-b>'
-let g:multi_cursor_start_key           = 'g<C-n>'
-let g:multi_cursor_select_all_key      = 'g<C-b>'
-let g:multi_cursor_next_key            = '<C-n>'
-let g:multi_cursor_prev_key            = '<C-p>'
-let g:multi_cursor_skip_key            = '<C-x>'
-let g:multi_cursor_quit_key            = '<Esc>'
 
 " }}}
 

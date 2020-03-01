@@ -18,15 +18,14 @@ PPA_FISH="fish-shell/release-3"
 
 if ! grep -q "^deb .*${PPA_VIM}" /etc/apt/sources.list /etc/apt/sources.list.d/*; then
 	sudo add-apt-repository "ppa:jonathonf/vim"
-	sudo apt-get update
-	sudo apt-get install -y vim
 fi
 
 if ! grep -q "^deb .*${PPA_FISH}" /etc/apt/sources.list /etc/apt/sources.list.d/*; then
 	sudo apt-add-repository "ppa:fish-shell/release-3"
-	sudo apt-get update
-	sudo apt-get install -y fish
 fi
+
+sudo apt-get update
+sudo apt-get install -y vim fish
 
 # fish
 if test -x $(which fish); then
@@ -40,8 +39,7 @@ fi
 
 # vim
 if test -x $(which vim); then
-	sudo apt-get install -y python python-dev cmake
+	sudo apt-get install -y python3 python3-dev cmake
 fi
-
 
 # vim: ft=sh
