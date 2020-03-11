@@ -47,6 +47,8 @@ end
 bind \es fpass
 bind \ef source_conf
 bind \eb broot
+bind \ei fish_vi_key_bindings
+bind \ed fish_default_key_bindings
 
 
 # enable virtualfish
