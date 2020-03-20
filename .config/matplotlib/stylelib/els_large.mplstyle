@@ -5,3 +5,6 @@ font.size: 18
 lines.linewidth: 1.25
 
 figure.figsize: 16, 9
+
+axes.unicode_minus: False
+
