@@ -18,7 +18,7 @@ silent! if plug#begin('~/.vim/plugged')
 	Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
 	" the git plugin is breaking on nvim
-	if has('nvim') == 0
+	if has('nvim') == 1
 		Plug 'Xuyuanp/nerdtree-git-plugin'
 	endif
 	" }}}
@@ -213,6 +213,9 @@ nnoremap <silent> <leader>D :NERDTreeToggle<CR>
 " search and replace
 nnoremap & :&&<cr>
 xnoremap & :&&<cr>
+
+" spell
+set spellsuggest=fast,20
 
 " << terminal key mappings >> {{{
 
