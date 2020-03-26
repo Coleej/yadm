@@ -13,14 +13,13 @@ endif
 
 silent! if plug#begin('~/.vim/plugged')
 
+	Plug 'junegunn/vim-plug'
+
 	" UI {{{
 	Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle'}
 	Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
-	" the git plugin is breaking on nvim
-	if has('nvim') == 1
-		Plug 'Xuyuanp/nerdtree-git-plugin'
-	endif
+	"Plug 'Xuyuanp/nerdtree-git-plugin'
 	" }}}
 
 
@@ -63,8 +62,15 @@ silent! if plug#begin('~/.vim/plugged')
 	Plug 'vim-syntastic/syntastic'
 	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'bash ~/.fzf/install --all' }
 	Plug 'junegunn/fzf.vim'
-	Plug 'Valloric/YouCompleteMe'
 	Plug 'vimwiki/vimwiki'
+
+	if ! has('nvim')
+		Plug 'Valloric/YouCompleteMe'
+	endif
+
+	if has('nvim')
+		Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	endif
 	
 	" }}}
 
@@ -90,19 +96,22 @@ silent! if plug#begin('~/.vim/plugged')
 
 
 	" python {{{
-	let dum = system("which python")
-	if v:shell_error == 0
-		Plug 'tmhedberg/SimpylFold'
-		Plug 'davidhalter/jedi-vim'
-		Plug 'jmcantrell/vim-virtualenv'
-		Plug 'tell-k/vim-autopep8'
-	else
-		let dum = system("which python3")
+	
+	if ! has('nvim')
+		let dum = system("which python")
 		if v:shell_error == 0
 			Plug 'tmhedberg/SimpylFold'
 			Plug 'davidhalter/jedi-vim'
 			Plug 'jmcantrell/vim-virtualenv'
 			Plug 'tell-k/vim-autopep8'
+		else
+			let dum = system("which python3")
+			if v:shell_error == 0
+				Plug 'tmhedberg/SimpylFold'
+				Plug 'davidhalter/jedi-vim'
+				Plug 'jmcantrell/vim-virtualenv'
+				Plug 'tell-k/vim-autopep8'
+			endif
 		endif
 	endif
 	" }}}
@@ -398,8 +407,10 @@ let g:AutoClosePairs_add = "$"
 
 " << jedi-vim >> {{{
 
-let g:jedi#completions_enabled = 0 " turn off for compatability with YCM
-"let g:jedi#use_splits_not_buffers = "winwidth"
+if ! has('nvim')
+	let g:jedi#completions_enabled = 1 " turn off for compatability with YCM
+	"let g:jedi#use_splits_not_buffers = "winwidth"
+endif
 
 " }}}
 
@@ -504,7 +515,8 @@ let g:ale_fixers = {
 	\ 'tex': ['latexindent',
 	\					'remove_trailing_lines',
 	\					'trim_whitespace'],
-	\ 'sh': ['shfmt', 'trim_whitespace']
+	\ 'sh': ['shfmt', 'trim_whitespace'],
+	\ 'fish': ['remove_trailing_lines', 'trim_whitespace']
 \}
 
 " python
@@ -1015,26 +1027,32 @@ execute "digraphs xb " . 0x2093
 
 " << colors >> {{{
 
+let darktrim = 234
+let graytrim = 242
+
+hi Pmenu ctermfg=0 ctermbg=193 
+
 hi VertSplit ctermfg=234 ctermbg=234
 hi StatusLine ctermfg=234 ctermbg=239
 hi StatusLineNC ctermfg=234 ctermbg=234
 hi StatusLineTerm ctermfg=234 ctermbg=239
 hi StatusLineTermNC ctermfg=234 ctermbg=234
+hi SignColumn cterm=bold ctermfg=14 ctermbg=242
 
 " pylint
 hi Search ctermfg=white ctermbg=blue
 
 " invisible characters 
-highlight NonText guifg=#4d4c42 guibg=bg
-highlight SpecialKey guifg=#4d4c42
+hi NonText guifg=#4d4c42 guibg=bg
+hi SpecialKey guifg=#4d4c42
 
 " vimwiki {{{
 
-:hi VimwikiHeader1 ctermfg=2
-:hi VimwikiHeader2 ctermfg=4
-:hi VimwikiHeader3 ctermfg=10
-:hi VimwikiHeader4 ctermfg=140
-:hi VimwikiHeader5 ctermfg=8
-:hi VimwikiHeader6 ctermfg=1
+hi VimwikiHeader1 ctermfg=2
+hi VimwikiHeader2 ctermfg=4
+hi VimwikiHeader3 ctermfg=10
+hi VimwikiHeader4 ctermfg=140
+hi VimwikiHeader5 ctermfg=8
+hi VimwikiHeader6 ctermfg=1
 
 " }}}

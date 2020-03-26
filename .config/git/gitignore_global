@@ -9,3 +9,4 @@ qbcflist.bcf
 *.nc
 E_reuse.bcf
 q_reuse.bcf
+__pycache__

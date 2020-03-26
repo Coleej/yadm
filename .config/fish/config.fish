@@ -45,10 +45,13 @@ end
 
 # key bindings
 bind \es fpass
+bind -M insert \es fpass
 bind \ef source_conf
+bind -M insert \ef source_conf
 bind \eb broot
+bind -M insert \eb broot
 bind \ei fish_vi_key_bindings
-bind \ed fish_default_key_bindings
+bind -M insert \ed fish_default_key_bindings
 
 
 # enable virtualfish
