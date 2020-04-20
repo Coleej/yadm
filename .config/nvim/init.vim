@@ -35,7 +35,6 @@ silent! if plug#begin('~/.config/nvim/plugged')
 
 	" functionality {{{
 	
-	Plug 'junegunn/vim-plug'
 	Plug 'tbabej/taskwiki'
 	Plug 'chrisbra/csv.vim'
   Plug 'Townk/vim-autoclose'
@@ -54,8 +53,9 @@ silent! if plug#begin('~/.config/nvim/plugged')
 
 	" utils {{{
 	
+	Plug 'junegunn/vim-plug'
 	Plug 'rbong/vim-flog'
-	Plug 'SirVer/ultisnips'
+" 	Plug 'SirVer/ultisnips'
 	Plug 'honza/vim-snippets'
 	Plug 'w0rp/ale'
 	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'bash ~/.fzf/install --all' }
@@ -732,10 +732,10 @@ if has("autocmd")
 		:au FileType python let g:SimpylFold_docstring_preview = 1
 
 		" jedi bindings "
-		:au FileType python let g:jedi#documentation_command = "U"
-		:au FileType python let g:jedi#goto_command = "<localleader>d"
-		:au FileType python let g:jedi#goto_assignments_command = "<localleader>g"
-		:au FileType python let g:jedi#usages_command = "<localleader>n"
+"		:au FileType python let g:jedi#documentation_command = "U"
+"		:au FileType python let g:jedi#goto_command = "<localleader>d"
+"		:au FileType python let g:jedi#goto_assignments_command = "<localleader>g"
+"		:au FileType python let g:jedi#usages_command = "<localleader>n"
 
   :augroup END
 	" }}}

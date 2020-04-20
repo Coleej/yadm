@@ -14,8 +14,8 @@ set_from_resource $ws2 i3-wm.workspace.02.name "2:chat1"
 set_from_resource $ws3 i3-wm.workspace.03.name "3:chat2"
 set_from_resource $ws4 i3-wm.workspace.04.name "4:media"
 set_from_resource $ws5 i3-wm.workspace.05.name "5:main"
-set_from_resource $ws6  i3-wm.workspace.06.name "6:system"
-set_from_resource $ws7  i3-wm.workspace.07.name "7:www"
+set_from_resource $ws6  i3-wm.workspace.06.name "6:www"
+set_from_resource $ws7  i3-wm.workspace.07.name "7:gis"
 set_from_resource $ws8  i3-wm.workspace.08.name "8"
 set_from_resource $ws9  i3-wm.workspace.09.name "9"
 set_from_resource $ws10 i3-wm.workspace.10.name "10"
@@ -126,10 +126,14 @@ bindsym $mod+Ctrl+9 workspace number $ws19
 bindsym $mod+Tab workspace next
 ## Navigate // Next Workspace // <Super><Alt> → ##
 bindsym $mod+$alt+Right workspace next
+## Navigate // Next Workspace // <Super><Shift>k ##
+bindsym $mod+Ctrl+k workspace next
 ## Navigate // Previous Workspace // <Super><Shift> Tab ##
 bindsym $mod+Shift+Tab workspace prev
 ## Navigate // Previous Workspace // <Super><Alt> ← ##
 bindsym $mod+$alt+Left workspace prev
+## Navigate // Previous Workspace // <Super><Shift>j ← ##
+bindsym $mod+Ctrl+j workspace prev
 
 ## Modify // Move Window to Workspace // <Super><Shift> 0..9 ##
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -355,7 +359,7 @@ set_from_resource $i3-wm.bar.trayoutput i3-wm.bar.trayoutput none
 set_from_resource $i3-wm.bar.stripworkspacenumbers i3-wm.bar.stripworkspacenumbers yes
 
 # i3xrocks config file. Override this for custom status indicators on the bar.
-set_from_resource $i3-wm.i3xrocks.config i3-wm.i3xrocks.config "/etc/regolith/i3xrocks/config"
+set $i3-wm.i3xrocks.config "/home/cody/.config/regolith/i3xrocks.config"
 
 # The bar configuration
 bar {
@@ -393,6 +397,12 @@ exec --no-startup-id /usr/bin/regolith-ftue
 # Hide the mouse pointer if unused for a duration
 exec --no-startup-id /usr/bin/unclutter -b
 
+# Startup the NetworkManager applet
+exec --no-startup-id /usr/bin/nm-applet
+
+# start shell on startup
+exec --no-startup-id i3-msg 'workspace 6:www; exec /usr/bin/firefox;workspace 5:main; exec /usr/bin/fish'
+
 # customizations
 bindsym $mod+Ctrl+v split vertical
 bindsym $mod+Ctrl+h split horizontal
@@ -405,8 +415,8 @@ workspace "2:chat1" output HDMI-1-1
 workspace "3:chat2" output HDMI-1-2
 workspace "4:media" output eDP-1-1
 workspace "5:main" output eDP-1-1
-workspace "6:system" output HDMI-1-1
-workspace "7:www" output HDMI-1-2
+workspace "6:www" output HDMI-1-2
+workspace "7:gis" output HDMI-1-2
 
 # assignments
 assign [class="Evolution"] "1:mail"
@@ -414,3 +424,4 @@ assign [class="Signal"] "2:chat1"
 assign [class="TelegramDesktop"] "3:chat2"
 assign [class="Rhythmbox"] "4:media"
 assign [class="Blueman-manager"] "4:media"
+assign [class="QGIS3"] "8:gis"
