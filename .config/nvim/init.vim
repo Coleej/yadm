@@ -475,19 +475,19 @@ nnoremap <silent> <c-right> :CmdResizeRight<cr>
 
 " << UltiSnips >> {{{
 
-let g:UltiSnipsUsePythonVersion = 3
+"let g:UltiSnipsUsePythonVersion = 3
 "let g:UltiSnipsExpandTrigger = '<c-o>'
 "let g:UltiSnipsJumpForwardTrigger = '<tab>'
 "let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "snips"]
-let g:UltiSnipsSnippetsDir="~/.config/nvim/snips"
-let g:UltiSnipsEditSplit="context"
+"let g:UltiSnipsSnippetDirectories=["UltiSnips", "snips"]
+"let g:UltiSnipsSnippetsDir="~/.config/nvim/snips"
+"let g:UltiSnipsEditSplit="context"
 
-let g:ultisnips_javascript = {
-	\ 'keyword-spacing': 'always',
-	\ 'semi': 'always',
-	\ 'space-before-function-paren': 'always'
-\}
+"let g:ultisnips_javascript = {
+"	\ 'keyword-spacing': 'always',
+"	\ 'semi': 'always',
+"	\ 'space-before-function-paren': 'always'
+"\}
 
 " }}}
 
