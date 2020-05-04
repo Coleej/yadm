@@ -359,7 +359,7 @@ set_from_resource $i3-wm.bar.trayoutput i3-wm.bar.trayoutput none
 set_from_resource $i3-wm.bar.stripworkspacenumbers i3-wm.bar.stripworkspacenumbers yes
 
 # i3xrocks config file. Override this for custom status indicators on the bar.
-set $i3-wm.i3xrocks.config "/home/cody/.config/regolith/i3xrocks.config"
+#set $i3-wm.i3xrocks.config "/home/cody/.config/regolith/i3xrocks.config"
 
 # The bar configuration
 bar {

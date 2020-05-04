@@ -60,7 +60,7 @@ silent! if plug#begin('~/.config/nvim/plugged')
 	Plug 'w0rp/ale'
 	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'bash ~/.fzf/install --all' }
 	Plug 'junegunn/fzf.vim'
-	Plug 'vimwiki/vimwiki'
+	Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	
 	" }}}
@@ -613,7 +613,13 @@ let g:NERDTreeIndicatorMapCustom = {
 " }}}
 
 " << vimwiki >> {{{
+let g:vimwiki_key_mappings =
+	\ {
+  \		'table_mappings': 0
+	\ }
 
+"<Plug>VimwikiNextLink
+"<Plug>VimwikiPrevLink
 let g:vimwiki_folding='syntax'
 
 let wiki_root = {}
@@ -849,8 +855,6 @@ if has("autocmd")
 		" meetings
 		:au Filetype vimwiki nnoremap <localleader>tmi i= files = <cr>[[file:~/Documents/meetings/individual/<esc>"=strftime("%Y-%m-%d")<cr>pa/draft.odp]]<cr>[[file:~/Documents/meetings/individual/<esc>"=strftime("%Y-%m-%d")<cr>pa/report.pdf]]<cr><cr>= notes =<cr>* 
 		
-		" CoE meetings
-		:au Filetype vimwiki nnoremap <localleader>tmc i= files = <cr>[[file:~/Documents/meetings/CoE/<esc>"=strftime("%Y-%m-%d")<cr>pa/draft.odp]]<cr>[[file:~/Documents/meetings/CoE/<esc>"=strftime("%Y-%m-%d")<cr>pa/report.pdf]]<cr><cr>= notes =<cr>* 
   :augroup END
 	" }}}
 
@@ -1034,7 +1038,7 @@ execute "digraphs xb " . 0x2093
 let darktrim = 234
 let graytrim = 242
 
-hi Pmenu ctermfg=0 ctermbg=193 
+hi Pmenu ctermfg=0 ctermbg=66
 
 hi VertSplit ctermfg=234 ctermbg=234
 hi StatusLine ctermfg=234 ctermbg=239
