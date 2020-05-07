@@ -8,24 +8,19 @@ fi
 
 # setup fzf
 if ! test -x $(which fzf); then
-	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-	~/.fzf/install --all
+	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.config/fzf
+	~/.config/fzf/install --all --xdg --no-bash --no-zsh
 fi
 
 # add ppas
-PPA_VIM="jonathonf/vim"
 PPA_FISH="fish-shell/release-3"
-
-if ! grep -q "^deb .*${PPA_VIM}" /etc/apt/sources.list /etc/apt/sources.list.d/*; then
-	sudo add-apt-repository "ppa:jonathonf/vim"
-fi
 
 if ! grep -q "^deb .*${PPA_FISH}" /etc/apt/sources.list /etc/apt/sources.list.d/*; then
 	sudo apt-add-repository "ppa:fish-shell/release-3"
 fi
 
 sudo apt-get update
-sudo apt-get install -y vim fish
+sudo apt-get install -y fish
 
 # fish
 if test -x $(which fish); then
@@ -35,11 +30,6 @@ if test -x $(which fish); then
 	fish -c "fisher add jethrokuan/fzf"
 	fish -c "fisher add jethrokuan/z"
 	fish -c "fisher add laughedelic/pisces"
-fi
-
-# vim
-if test -x $(which vim); then
-	sudo apt-get install -y python3 python3-dev cmake
 fi
 
 # vim: ft=sh

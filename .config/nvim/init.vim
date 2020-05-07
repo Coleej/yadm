@@ -20,7 +20,6 @@ silent! if plug#begin('~/.config/nvim/plugged')
 	
 	" }}}
 
-
 	" asthetic {{{
 	
 	Plug 'breuckelen/vim-resize'
@@ -31,7 +30,6 @@ silent! if plug#begin('~/.config/nvim/plugged')
 	Plug 'powerman/vim-plugin-AnsiEsc'
 	
 	" }}}
-
 
 	" functionality {{{
 	
@@ -50,7 +48,6 @@ silent! if plug#begin('~/.config/nvim/plugged')
 	
 	" }}}
 
-
 	" utils {{{
 	
 	Plug 'junegunn/vim-plug'
@@ -58,13 +55,12 @@ silent! if plug#begin('~/.config/nvim/plugged')
 " 	Plug 'SirVer/ultisnips'
 	Plug 'honza/vim-snippets'
 	Plug 'w0rp/ale'
-	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'bash ~/.fzf/install --all' }
+	Plug 'junegunn/fzf', { 'dir': '~/.config/fzf', 'do': 'bash ~/.config/fzf/install --all --xdg --no-bash --no-zsh' }
 	Plug 'junegunn/fzf.vim'
 	Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	
 	" }}}
-
 
 	" latex {{{
 	
@@ -75,14 +71,12 @@ silent! if plug#begin('~/.config/nvim/plugged')
 	
 	" }}}
 
-
 	" python {{{
 	
 	Plug 'tmhedberg/SimpylFold'
 	Plug 'jmcantrell/vim-virtualenv'
 	
 	" }}}
-
 
 	" syntax highlighting {{{
 	
