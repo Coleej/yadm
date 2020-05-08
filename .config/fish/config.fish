@@ -5,8 +5,11 @@ set -x XDG_CONFIG_HOME $HOME/.config
 set -x XDG_DATA_DIRS $XDG_DATA_DIRS:/var/lib/snapd/desktop
 set -x VIRTUALFISH_DEFAULT_PYTHON "/usr/bin/python3"
 set -x PROJECT_HOME "~/Projects"
+set -x TASKRC "$XDG_CONFIG_HOME/task/taskrc"
+set -x TASKDATA "$XDG_CONFIG_HOME/task/task"
 
-set -x EDITOR "vim"
+
+set -x EDITOR "nvim"
 set -x EMAIL "mail@codyjohnson.xyz"
 set -x MATLAB_SHELL "/usr/bin/bash"
 
