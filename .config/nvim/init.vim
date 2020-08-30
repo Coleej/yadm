@@ -83,6 +83,7 @@ silent! if plug#begin('~/.config/nvim/plugged')
 	Plug 'leafgarland/typescript-vim'
   Plug 'dag/vim-fish'
 	Plug 'Glench/Vim-Jinja2-Syntax'
+	Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 	
 	" }}}
 
@@ -432,7 +433,7 @@ hi CocHintSign	cterm=bold ctermfg=14
 
 " << terminal-mode maps>> {{{
 
-tnoremap <C-W>N <C-\><C-n>
+tnoremap <C-W>n <C-\><C-n>
 tnoremap ]g <C-\><C-N>:tabn<cr>
 tnoremap [g <C-\><C-N>:tabp<cr>
 tnoremap ]b <C-\><C-N>:bnext<cr>
@@ -441,6 +442,9 @@ tnoremap <C-l>l <C-\><C-n>:wincmd l<cr>
 tnoremap <C-h> <C-\><C-n>:wincmd h<cr>
 tnoremap <C-k> <C-\><C-n>:wincmd k<cr>
 tnoremap <C-j> <C-\><C-n>:wincmd j<cr>
+
+" paste in insert mode and don't clobber fzf <Ctrl-R> search
+tnoremap <expr> <A-r> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 
 nnoremap <silent> <leader>t :execute "bel 15split term://fish"<cr>
 nnoremap <silent> <leader>vt :execute "vsplit term://fish"<cr>
@@ -1040,6 +1044,7 @@ hi StatusLineNC ctermfg=234 ctermbg=234
 hi StatusLineTerm ctermfg=234 ctermbg=239
 hi StatusLineTermNC ctermfg=234 ctermbg=234
 hi SignColumn cterm=bold ctermfg=14 ctermbg=242
+hi TermCursorNC ctermbg=242 cterm=NONE
 
 " pylint
 hi Search ctermfg=white ctermbg=blue

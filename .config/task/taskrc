@@ -11,7 +11,7 @@
 # Use the command 'task show' to see all defaults and overrides
 
 # Files
-data.location=~/.config/taskwarrior/task
+data.location=~/.config/task/task
 
 # Color theme (uncomment one to use)
 #include /usr/share/doc/task/rc/light-16.theme
@@ -35,11 +35,11 @@ report._reviewed.description=Tasksh review report.  Adjust the filter to your ne
 report._reviewed.columns=uuid
 report._reviewed.sort=reviewed+,modified+
 report._reviewed.filter=( reviewed.none: or reviewed.before:now-2d ) and ( +PENDING or +WAITING )
-#taskd.certificate=\/home\/cody\/.task\/mobile.cert.pem
-#taskd.key=\/home\/cody\/.task\/mobile.key.pem
-#taskd.ca=\/home\/cody\/.task\/ca.cert.pem
-#taskd.server=taskd.exo.codyjohnson.xyz:53589
-#taskd.credentials=personal\/cody\/939ff129-2a4f-43df-ba9e-93d6bd054184
+#taskd.certificate=\/home\/cody\/.config\/task\/lenovo.cert.pem
+#askd.key=\/home\/cody\/.config\/task\/lenovo.key.pem
+#askd.ca=\/home\/cody\/.config\/task\/ca.cert.pem
+#askd.server=taskd.exo.codyjohnson.xyz:53589
+#askd.credentials=personal\/Cody Johnson\/929dd67a-3177-4b8e-9d5f-1fc2410810f7
 confirmation=off
 detection=off
 verbose=off

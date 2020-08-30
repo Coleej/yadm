@@ -13,14 +13,14 @@ if ! test -x $(which fzf); then
 fi
 
 # add ppas
-PPA_FISH="fish-shell/release-3"
+#PPA_FISH="fish-shell/release-3"
 
-if ! grep -q "^deb .*${PPA_FISH}" /etc/apt/sources.list /etc/apt/sources.list.d/*; then
-	sudo apt-add-repository "ppa:fish-shell/release-3"
-fi
+#if ! grep -q "^deb .*${PPA_FISH}" /etc/apt/sources.list /etc/apt/sources.list.d/*; then
+#	sudo apt-add-repository "ppa:fish-shell/release-3"
+#fi
 
-sudo apt-get update
-sudo apt-get install -y fish
+#sudo apt-get update
+#sudo apt-get install -y fish
 
 # fish
 if test -x $(which fish); then
