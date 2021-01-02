@@ -1,6 +1,6 @@
 #/usr/bin/env bash
 
-sudo apt-get install curl
+#sudo apt-get install curl
 
 if [ -z ${XDG_CONFIG_HOME+x} ]; then
 	XDG_CONFIG_HOME="~/.config"
@@ -24,12 +24,12 @@ fi
 
 # fish
 if test -x $(which fish); then
-	chsh -s "$(which fish)" $USER
+	#chsh -s "$(which fish)" $USER
 	curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
 	fish -c fisher
-	fish -c "fisher add jethrokuan/fzf"
-	fish -c "fisher add jethrokuan/z"
-	fish -c "fisher add laughedelic/pisces"
+	fish -c "fisher install jethrokuan/fzf"
+	fish -c "fisher install jethrokuan/z"
+	fish -c "fisher install laughedelic/pisces"
 fi
 
 # vim: ft=sh

@@ -52,6 +52,8 @@ function fish_prompt
       set -g host_color $magenta
     case arch-box
       set -g host_color $cyan
+    case pinebook
+      set -g host_color $normal
     case '*'
       set -g host_color $royalblue
   end
