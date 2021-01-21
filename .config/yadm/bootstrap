@@ -27,9 +27,9 @@ if test -x $(which fish); then
 	chsh -s "$(which fish)" $USER
 	curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
 	fish -c fisher
-	fish -c "fisher install jethrokuan/fzf"
-	fish -c "fisher install jethrokuan/z"
-	fish -c "fisher install laughedelic/pisces"
+	fish -c "fisher add jethrokuan/fzf"
+	fish -c "fisher add jethrokuan/z"
+	fish -c "fisher add laughedelic/pisces"
 fi
 
 # vim: ft=sh
