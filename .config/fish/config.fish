@@ -55,6 +55,8 @@ else if [ (hostname) = "arch-py" ]
   eval (python3 -m virtualfish auto_activation projects)
 else if [ (hostname) = "dell-desk" ] 
   eval (python3 -m virtualfish auto_activation projects)
+else if [ (hostname) = "CHLCLJ-WN-1236J" ] 
+  eval (python3 -m virtualfish auto_activation projects)
 end
 
 #cd ~
