@@ -67,19 +67,19 @@
 ## The base URL for the notebook server.
 #
 #  Leading and trailing slashes can be omitted, and will automatically be added.
-c.NotebookApp.base_url = '/jupyter/'
+#c.NotebookApp.base_url = '/jupyter/'
 
 ## Specify what command to use to invoke a web browser when opening the notebook.
 #  If not specified, the default browser will be determined by the `webbrowser`
 #  standard library module, which allows setting of the BROWSER environment
 #  variable to override it.
-c.NotebookApp.browser = '/usr/bin/firefox'
+#c.NotebookApp.browser = '/usr/bin/firefox'
 
 ## Open jupyter notebook in new browser window
 # value = 2 opens in a tab
 #       = 1 opens in new window
 #       = 0 opens in existing window
-c.NotebookApp.webbrowser_open_new = 1
+#c.NotebookApp.webbrowser_open_new = 1
 
 ## The full path to an SSL/TLS certificate file.
 #c.NotebookApp.certfile = ''
