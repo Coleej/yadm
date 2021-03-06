@@ -6,6 +6,7 @@ set -x XDG_DATA_DIRS $XDG_DATA_DIRS:/var/lib/snapd/desktop
 
 ## virtualfish
 set -x VIRTUALFISH_DEFAULT_PYTHON "/usr/bin/python3"
+set -x VIRTUALFISH_HOME "~/.config/virtualenvs"
 set -x PROJECT_HOME "~/Projects"
 
 ## taskwarrior
