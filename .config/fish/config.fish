@@ -6,12 +6,13 @@ set -x XDG_DATA_DIRS $XDG_DATA_DIRS:/var/lib/snapd/desktop
 
 ## virtualfish
 set -x VIRTUALFISH_DEFAULT_PYTHON "/usr/bin/python3"
-set -x VIRTUALFISH_HOME "~/.config/virtualenvs"
-set -x PROJECT_HOME "~/Projects"
+set -x VIRTUALFISH_HOME "$XDG_CONFIG_HOME/virtualenvs"
+set -x PROJECT_HOME "$HOME/Projects"
 
 ## taskwarrior
 set -x TASKRC "$XDG_CONFIG_HOME/task/taskrc"
 set -x TASKDATA "$XDG_CONFIG_HOME/task/task"
+set -x VIT_DIR "$XDG_CONFIG_HOME/vit"
 
 ## other
 set -x EDITOR "nvim"
