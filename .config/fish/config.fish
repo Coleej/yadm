@@ -47,14 +47,4 @@ bind -M insert \er ranger
 bind \ei fish_vi_key_bindings
 bind -M insert \ed fish_default_key_bindings
 
-
-# enable virtualfish
-if [ (hostname) = "mobile" ]
-  eval (python3 -m virtualfish auto_activation projects)
-else if [ (hostname) = "arch-py" ]
-  eval (python3 -m virtualfish auto_activation projects)
-else if [ (hostname) = "dell-desk" ] 
-  eval (python3 -m virtualfish auto_activation projects)
-end
-
 #cd ~

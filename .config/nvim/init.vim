@@ -33,7 +33,7 @@ silent! if plug#begin('~/.config/nvim/plugged')
 
 	" functionality {{{
 	
-	Plug 'tbabej/taskwiki'
+	"	Plug 'tbabej/taskwiki'
 	Plug 'chrisbra/csv.vim'
   Plug 'Townk/vim-autoclose'
 	Plug 'nelstrom/vim-visual-star-search'
@@ -215,8 +215,6 @@ nnoremap <leader>sv :source $MYVIMRC<cr> :echo "vimrc sourced"<cr>
 " edit redpen conf
 nnoremap <leader>er :split $HOME/.local/opt/redpen-distribution-1.10.3/conf/redpen-conf-en.xml<cr>
 nnoremap <leader>vr :vsplit $HOME/.local/opt/redpen-distribution-1.10.3/conf/redpen-conf-en.xml<cr>
-
-
 
 " Help
 nnoremap <leader>vh :vert help<cr>
@@ -767,6 +765,7 @@ if has("autocmd")
 		au FileType tex setlocal foldtext=vimtex#fold#text()
 		au FileType tex nnoremap <buffer> <localleader>cf :call vimtex#fzf#run()<cr>
 		au FileType tex nnoremap <buffer> <localleader>lh <plug>(vimtex-compile-ss)
+		au FileType tex nnoremap <buffer> <localleader>lss <plug>(vimtex-compile-selected)
     au FileType tex nnoremap <buffer> <localleader>la <plug>(vimtex-lacheck)
     au FileType tex nnoremap <buffer> U :VimtexDocPackage<cr>
 		au FileType tex nnoremap <buffer> <localleader>ts i\textsuperscript{}<esc>i
