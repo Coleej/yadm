@@ -73,6 +73,7 @@ silent! if plug#begin('~/.config/nvim/plugged')
 
 	" python {{{
 	
+	Plug 'psf/black', { 'branch': 'stable' }
 	Plug 'tmhedberg/SimpylFold'
 	Plug 'jmcantrell/vim-virtualenv'
 	
@@ -82,7 +83,7 @@ silent! if plug#begin('~/.config/nvim/plugged')
 	
 	Plug 'leafgarland/typescript-vim'
   Plug 'dag/vim-fish'
-	Plug 'Glench/Vim-Jinja2-Syntax'
+	Plug 'glench/Vim-Jinja2-Syntax'
 	Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 	
 	" }}}
@@ -112,9 +113,18 @@ inoremap <silent> <f5> <C-R>=strftime("%d %b %Y")<cr>
 set pastetoggle=<f6>  
 nnoremap <silent> <leader>D :NERDTreeToggle<CR>
 
+" float scrolls
+nnoremap <nowait><expr> <C-p> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-p>"
+nnoremap <nowait><expr> <C-n> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-n>"
+inoremap <nowait><expr> <C-p> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+inoremap <nowait><expr> <C-n> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+
 " search and replace
 nnoremap & :&&<cr>
 xnoremap & :&&<cr>
+
+" code formatter
+nnoremap <F9> :CocCommand python.sortImports<CR> :Black<CR>
 
 " spell
 set spellsuggest=fast,20
@@ -489,7 +499,7 @@ nnoremap <silent> <c-right> :CmdResizeRight<cr>
 
 " << AutoClose >>  {{{
 
-let g:AutoClosePairs_add = "$"
+let g:AutoClosePairs_add = "$ % <>"
 
 " }}}
 
@@ -721,6 +731,9 @@ if has("autocmd")
   " python autocmd group ------------------------------------------- {{{
   :augroup filetype_python
     :autocmd!
+		:au BufWritePre *.py call FormatPython()
+"		:au BufWritePre *.py execute ':Black'
+"		:au BufWritePre *.py execute ':CocCommand python.sortImports'
 		:au FileType vimwiki let maplocalleader="\'"
 		:au Filetype python setlocal tabstop=4
 		:au Filetype python setlocal softtabstop=4
@@ -968,6 +981,13 @@ endif
 " }}}
 
 " << custom funcs >> {{{
+
+" format python
+function FormatPython()
+	Black
+	CocCommand python.sortImports
+endfunction
+
 
 " create custom ToCs for vimtex
 function CreateTocs()
