@@ -1,4 +1,4 @@
-#/usr/bin/env bash
+#!/usr/bin/env bash
 
 #sudo apt-get install curl
 
@@ -22,14 +22,34 @@ fi
 #sudo apt-get update
 #sudo apt-get install -y fish
 
+# python
+sudo apt install python3-pip
+pip install --user virutalfish
+
+# fish path
+fish -c 'fish_add_path "~/.local/bin"'
+
+# virtual fish
+fish -c 'vf install projects auto_activation  global_requirements environment'
+fish -c 'exec fish'
+
 # fish
 if test -x $(which fish); then
 	#chsh -s "$(which fish)" $USER
-	curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
-	fish -c fisher
+	curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 	fish -c "fisher install jethrokuan/fzf"
 	fish -c "fisher install jethrokuan/z"
 	fish -c "fisher install laughedelic/pisces"
 fi
+
+
+# node
+sudo curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+sudo echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt update
+sudo apt install yarn
+
+
+
 
 # vim: ft=sh
