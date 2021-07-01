@@ -857,7 +857,7 @@ if has("autocmd")
 		" wiki template macros "
 		" -------------------- "
 		" literature review notes
-		:au Filetype vimwiki nnoremap <localleader>tl i= title = <cr><cr><cr>= synopsis = <cr><cr><cr>= conclusions =<cr><cr><cr>= criticisms =<cr><cr><cr>= notes =<cr>== general ==<cr>* 
+		:au Filetype vimwiki nnoremap <localleader>tl i= title = <cr><cr><cr>= authors = <cr><cr><cr>= synopsis = <cr><cr><cr>= conclusions =<cr><cr><cr>= criticisms =<cr><cr><cr>= notes =<cr>== general ==<cr>* 
 
 		" group meetings
 		:au Filetype vimwiki nnoremap <localleader>tmg i= files = <cr>[[file:~/Documents/meetings/research_group/<esc>"=strftime("%Y-%m-%d")<cr>pa/draft.odp]]<cr>[[file:~/Documents/meetings/research_group/<esc>"=strftime("%Y-%m-%d")<cr>pa/report.pdf]]<cr><cr>= notes =<cr>* 
