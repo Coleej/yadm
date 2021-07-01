@@ -12,6 +12,7 @@ set -x PROJECT_HOME "$HOME/Projects"
 ## taskwarrior
 set -x TASKRC "$XDG_CONFIG_HOME/task/taskrc"
 set -x TASKDATA "$XDG_CONFIG_HOME/task/task"
+set -x VIT_DIR "$XDG_CONFIG_HOME/vit"
 
 ## other
 set -x EDITOR "nvim"
