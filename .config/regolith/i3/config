@@ -667,18 +667,18 @@ set_from_resource $i3-wm.program.3 i3-wm.program.3 :
 exec --no-startup-id $i3-wm.program.3
 
 # Startup applications
-workspace "$ws1" DisplayPort-1
-workspace "$ws2" HDMI-A-0
-workspace "$ws3" DisplayPort-1
+#workspace "$ws1" DisplayPort-1
+#workspace "$ws2" HDMI-A-0
+#workspace "$ws3" DisplayPort-1
 
 # Email
-assign [class="Evolution"] → 1
+assign [class="Evolution"] → "$ws1"
 
 # Chat
-assign [class="Signal"] → 2
-assign [class="TelegramDesktop"] → 2
+assign [class="Signal"] → "$ws2"
+assign [class="TelegramDesktop"] → "$ws2"
 
 # Music player
-assign [class="Rhythmbox"] → 3
-assign [class="Pavucontrol"] → 3
-assign [class="Blueman-manager"] → 3
+assign [class="Rhythmbox"] → "$ws3"
+assign [class="Pavucontrol"] → "$ws3"
+assign [class="Blueman-manager"] → "$ws3"
