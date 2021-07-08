@@ -66,7 +66,7 @@ function fish_prompt
   end
   
   # display 'user@host:'
-  echo -n -s $skyblue (whoami) @ $host_color (hostname|cut -d . -f 1) ": "
+  echo -n -s $skyblue (whoami) $orange @ $host_color (hostname|cut -d . -f 1) ": "
 
   # display the current directory name:
   echo -n -s $cwd $normal
