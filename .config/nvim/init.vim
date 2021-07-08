@@ -763,10 +763,11 @@ if has("autocmd")
   :augroup END
 	" }}}
   
-  " tex autocmd group ------------------------------------------------- {{{
+  " << tex >> --------------------------------------------------------- {{{
 
   augroup filetype_tex
     autocmd!
+
 		au Filetype tex let g:vimtex_compiler_progname = 'nvr'
     au FileType tex setlocal ts=2
     au FileType tex setlocal sts=2
@@ -1050,7 +1051,7 @@ execute "digraphs xb " . 0x2093
 
 " << colors >> {{{
 
-"colorscheme Atelier_CaveDark
+colorscheme Atelier_SulphurpoolDark
 
 let darktrim = 234
 let graytrim = 242
