@@ -738,7 +738,7 @@ if has("autocmd")
 		:au Filetype python setlocal tabstop=4
 		:au Filetype python setlocal softtabstop=4
 		:au Filetype python setlocal shiftwidth=4
-		:au Filetype python setlocal textwidth=79
+		:au Filetype python setlocal textwidth=0
 		:au Filetype python setlocal expandtab
 		:au Filetype python setlocal nu
 		:au Filetype python setlocal fileformat=unix
