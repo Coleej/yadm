@@ -1,0 +1,9 @@
+[Unit]
+Description=OpenRGB control
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/openrgb -m 'Color Cycle'
+
+[Install]
+WantedBy=default.target
