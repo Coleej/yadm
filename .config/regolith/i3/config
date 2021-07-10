@@ -678,8 +678,14 @@ assign [class="Evolution"] → "$ws1"
 assign [class="Signal"] → "$ws2"
 assign [class="TelegramDesktop"] → "$ws2"
 
-# Music player
-#exec --no-startup-id "i3-msg 'workspace 3; append_layout /home/cody.config/regolith/i3/layouts/media-workspace.json'"
-assign [class="Rhythmbox"] → "$ws3"
-assign [class="Pavucontrol"] → "$ws3"
-assign [class="Blueman-manager"] → "$ws3"
+# media workspace
+# !! Hack to keep Pop-os theme workspace name within i3-msg call !! 
+exec --no-startup-id "i3-msg 'workspace 3:<span> </span><span font_desc=\"Fira Mono Regular 11\">3 </span><span foreground=\"#4E9A06\"></span><span> </span>; append_layout ~/.config/regolith/i3/layouts/media-workspace.json'"
+
+# Startup programs
+exec "/usr/bin/evolution"
+exec "/opt/telegram/Telegram -- %u"
+exec "/snap/bin/signal-desktop"
+exec "/usr/bin/rhythmbox"
+exec "/usr/bin/pavucontrol"
+exec "/usr/bin/blueman-manager"
