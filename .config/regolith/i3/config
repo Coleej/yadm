@@ -670,6 +670,8 @@ exec --no-startup-id $i3-wm.program.3
 workspace "$ws1" output DisplayPort-1
 workspace "$ws2" output HDMI-A-0
 workspace "$ws3" output DisplayPort-1
+workspace "$ws4" output DisplayPort-1
+workspace "$ws5" output HDMI-A-0
 
 # Email
 assign [class="Evolution"] → "$ws1"
@@ -677,6 +679,12 @@ assign [class="Evolution"] → "$ws1"
 # Chat
 assign [class="Signal"] → "$ws2"
 assign [class="TelegramDesktop"] → "$ws2"
+
+# Web
+assign [class="FirefoxStartUp"] → "$ws4"
+
+# Terminal
+assign [class="Alacritty" title="initTerm"] → "$ws5"
 
 # media workspace
 # !! Hack to keep Pop-os theme workspace name within i3-msg call !! 
@@ -689,3 +697,5 @@ exec "/snap/bin/signal-desktop"
 exec "/usr/bin/rhythmbox"
 exec "/usr/bin/pavucontrol"
 exec "/usr/bin/blueman-manager"
+exec "/usr/bin/firefox --class FirefoxStartUp"
+exec "/usr/bin/alacritty -t initTerm"
