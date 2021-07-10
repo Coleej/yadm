@@ -667,9 +667,9 @@ set_from_resource $i3-wm.program.3 i3-wm.program.3 :
 exec --no-startup-id $i3-wm.program.3
 
 # Startup applications
-#workspace "$ws1" DisplayPort-1
-#workspace "$ws2" HDMI-A-0
-#workspace "$ws3" DisplayPort-1
+workspace "$ws1" output DisplayPort-1
+workspace "$ws2" output HDMI-A-0
+workspace "$ws3" output DisplayPort-1
 
 # Email
 assign [class="Evolution"] → "$ws1"
@@ -679,6 +679,7 @@ assign [class="Signal"] → "$ws2"
 assign [class="TelegramDesktop"] → "$ws2"
 
 # Music player
+#exec --no-startup-id "i3-msg 'workspace 3; append_layout /home/cody.config/regolith/i3/layouts/media-workspace.json'"
 assign [class="Rhythmbox"] → "$ws3"
 assign [class="Pavucontrol"] → "$ws3"
 assign [class="Blueman-manager"] → "$ws3"
