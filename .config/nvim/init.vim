@@ -1051,20 +1051,20 @@ execute "digraphs xb " . 0x2093
 
 " << colors >> {{{
 
-colorscheme Atelier_SulphurpoolDark
+colorscheme 0x7A69_dark
 
-let darktrim = 234
-let graytrim = 242
+"let darktrim = 234
+"let graytrim = 242
 
 hi Pmenu ctermfg=0 ctermbg=66
 
-hi VertSplit ctermfg=234 ctermbg=234
-hi StatusLine ctermfg=234 ctermbg=239
-hi StatusLineNC ctermfg=234 ctermbg=234
-hi StatusLineTerm ctermfg=234 ctermbg=239
-hi StatusLineTermNC ctermfg=234 ctermbg=234
-hi SignColumn cterm=bold ctermfg=14 ctermbg=242
-hi TermCursorNC ctermbg=242 cterm=NONE
+"hi VertSplit ctermfg=234 ctermbg=234
+"hi StatusLine ctermfg=234 ctermbg=239
+"hi StatusLineNC ctermfg=234 ctermbg=234
+"hi StatusLineTerm ctermfg=234 ctermbg=239
+"hi StatusLineTermNC ctermfg=234 ctermbg=234
+"hi SignColumn cterm=bold ctermfg=14 ctermbg=242
+"hi TermCursorNC ctermbg=242 cterm=NONE
 
 " pylint
 hi Search ctermfg=white ctermbg=blue
