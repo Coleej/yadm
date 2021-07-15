@@ -1,0 +1,10 @@
+[Unit]
+Description=OpenRGB control
+After=suspend.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/openrgb -m 'Color Cycle'
+
+[Install]
+WantedBy=suspend.target
