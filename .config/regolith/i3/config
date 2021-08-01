@@ -699,3 +699,5 @@ exec "/usr/bin/pavucontrol"
 exec "/usr/bin/blueman-manager"
 exec "/usr/bin/firefox -P startup --no-remote --class FirefoxStartUp"
 exec "/usr/bin/alacritty -t initTerm"
+
+# Keybindings
