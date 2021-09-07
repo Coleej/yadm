@@ -684,20 +684,12 @@ let g:tex_flavor = 'latex'
 let g:vimtex_quickfix_mode = 2
 let g:vimtex_quickfix_autoclose_after_keystrokes = 3
 
-let g:vimtex_quickfix_latexlog = {
-	\ 'overfull' : 0,
-	\ 'underfull' : 0,
-	\ 'ignore_filters' : [
-	\		'Marginpar on page',
-	\		'.*float specifier changed.*',
-	\	],
-	\ 'packages' : {
-  \		'default': 1,
-	\		'hyperref': 0,
-	\		'gensymb': 0,
-	\		'float': 0,
-	\	},
-	\}
+let g:vimtex_quickfix_ignore_filters = [
+			\ 'overfull',
+			\ 'underfull',
+			\ 'Marginpar on page',
+			\ '.*float specifier changed.*'
+\]
 
 let g:vimtex_compiler_latexmk = {
 	\ 'build_dir' : './build'
