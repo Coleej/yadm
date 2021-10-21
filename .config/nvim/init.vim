@@ -463,10 +463,10 @@ nnoremap <silent> <leader>vt :execute "vsplit term://fish"<cr>
 
 " << fugitive >> {{{
 
-nnoremap <leader>gc :Gcommit -a<cr>
-nnoremap <leader>gs :Gstatus<cr>
-nnoremap <leader>gp :Gpush<cr>
-nnoremap <leader>gl :Gpull<cr>
+nnoremap <leader>gc :Git commit -a<cr>
+nnoremap <leader>gs :Git<cr>
+nnoremap <leader>gp :Git push<cr>
+nnoremap <leader>gl :Git pull<cr>
 
 " }}}
 
@@ -688,7 +688,8 @@ let g:vimtex_quickfix_ignore_filters = [
 			\ 'overfull',
 			\ 'underfull',
 			\ 'Marginpar on page',
-			\ '.*float specifier changed.*'
+			\ '.*float specifier changed.*',
+			\ '.*caption.*'
 \]
 
 let g:vimtex_compiler_latexmk = {
