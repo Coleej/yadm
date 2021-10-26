@@ -699,7 +699,6 @@ let g:vimtex_compiler_latexmk = {
 let g:vimtex_fold_enabled=0
 let g:vimtex_fold_levelmarker='◊'
 
-
 " }}}
 
 " }}}
