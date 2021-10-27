@@ -808,7 +808,7 @@ if has("autocmd")
   :augroup END
 	" }}}
 
-  " wiki autocmd group ------------------------------------------ {{{
+  " << vimwiki >> autocmd group ------------------------------------------ {{{
   :augroup filetype_vimwiki
     :autocmd!
 
