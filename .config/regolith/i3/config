@@ -667,11 +667,11 @@ set_from_resource $i3-wm.program.3 i3-wm.program.3 :
 exec --no-startup-id $i3-wm.program.3
 
 # Startup applications
-workspace "$ws1" output DisplayPort-1
-workspace "$ws2" output DisplayPort-2
-workspace "$ws3" output DisplayPort-1
-workspace "$ws4" output DisplayPort-1
-workspace "$ws5" output DisplayPort-2
+workspace "$ws1" output DisplayPort-2
+workspace "$ws2" output HDMI-A-0
+workspace "$ws3" output DisplayPort-2
+workspace "$ws4" output DisplayPort-2
+workspace "$ws5" output HDMI-A-0
 
 # Email
 assign [class="Evolution"] → "$ws1"
