@@ -685,8 +685,8 @@ let g:vimtex_quickfix_mode = 2
 let g:vimtex_quickfix_autoclose_after_keystrokes = 3
 
 let g:vimtex_quickfix_ignore_filters = [
-			\ 'overfull',
-			\ 'underfull',
+			\ 'Overfull',
+			\ 'Underfull',
 			\ 'Marginpar on page',
 			\ '.*float specifier changed.*',
 			\ '.*caption.*'
@@ -766,6 +766,7 @@ if has("autocmd")
     au FileType tex setlocal sw=2
 		au FileType tex setlocal spell spelllang=en_us
 		au FileType tex setlocal nonu
+		au FileType tex setlocal fillchars=fold:\ 
 		au FileType tex setlocal foldmethod=expr
 		au FileType tex setlocal foldexpr=vimtex#fold#level(v:lnum)
 		au FileType tex setlocal foldtext=vimtex#fold#text()
