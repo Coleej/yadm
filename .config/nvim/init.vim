@@ -59,6 +59,7 @@ silent! if plug#begin('~/.config/nvim/plugged')
 	Plug 'junegunn/fzf.vim'
 	Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	Plug 'z0mbix/vim-shfmt', { 'for': ['sh', 'bash'] }
 	
 	" }}}
 
