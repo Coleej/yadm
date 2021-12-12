@@ -1,4 +1,7 @@
 # Configuration for virtualfish
+ 
+# system
+set -x LD_LIBRARY_PATH "/usr/local/lib"
 
 # variables
 set -x XDG_CONFIG_HOME $HOME/.config
