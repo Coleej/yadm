@@ -679,7 +679,7 @@ endfunction
 
 let g:vimtex_view_general_viewer = 'qpdfview'
 let g:vimtex_view_general_options = '--unique @pdf\#src:@tex:@line:@col'
-let g:vimtex_view_general_options_latexmk = '--unique'
+"let g:vimtex_view_general_options_latexmk = '--unique'
 let g:tex_flavor = 'latex'
 
 let g:vimtex_quickfix_mode = 2
@@ -694,7 +694,10 @@ let g:vimtex_quickfix_ignore_filters = [
 \]
 
 let g:vimtex_compiler_latexmk = {
-	\ 'build_dir' : './build'
+	\ 'build_dir' : './build',
+	\ 'options' : [
+	\ '-unique'
+	\ ],
 	\}
 
 let g:vimtex_fold_enabled=0
