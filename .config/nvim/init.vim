@@ -74,7 +74,7 @@ silent! if plug#begin('~/.config/nvim/plugged')
 
 	" python {{{
 	
-	Plug 'psf/black', { 'branch': 'stable' }
+	Plug 'psf/black', { 'branch': 'main' }
 	Plug 'tmhedberg/SimpylFold'
 	Plug 'jmcantrell/vim-virtualenv'
 	
