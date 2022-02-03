@@ -701,3 +701,4 @@ exec "/usr/bin/firefox -P startup --no-remote --class FirefoxStartUp"
 exec "/usr/bin/alacritty -t initTerm"
 
 # Keybindings
+bindsym $mod+Shift+z split horizontal, layout tabbed
