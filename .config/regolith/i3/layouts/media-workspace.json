@@ -1,0 +1,80 @@
+// vim:ts=4:sw=4:et
+{
+    // splitv split container with 2 children
+    "border": "pixel",
+    "floating": "auto_off",
+    "layout": "splitv",
+    "marks": [],
+    "percent": 0.32,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "pixel",
+            "current_border_width": 3,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 1419,
+               "width": 2560,
+               "x": 0,
+               "y": 0
+            },
+            "marks": [],
+            "name": "Volume Control",
+            "percent": 0.5,
+            "swallows": [
+               {
+                "class": "^Pavucontrol$",
+                "instance": "^pavucontrol$",
+                "title": "^Volume\\ Control$"
+               }
+            ],
+            "type": "con"
+        },
+        {
+            "border": "pixel",
+            "current_border_width": 3,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 1405,
+               "width": 841,
+               "x": 1709,
+               "y": 4
+            },
+            "marks": [],
+            "name": "Bluetooth Devices",
+            "percent": 0.5,
+            "swallows": [
+               {
+                "class": "^Blueman\\-manager$",
+                "instance": "^blueman\\-manager$",
+                "title": "^Bluetooth\\ Devices$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+
+{
+    "border": "pixel",
+    "current_border_width": 3,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1405,
+       "width": 1575,
+       "x": 975,
+       "y": 4
+    },
+    "marks": [],
+    "name": "Rhythmbox",
+    "percent": 0.68,
+    "swallows": [
+       {
+        "class": "^Rhythmbox$",
+        "instance": "^rhythmbox$",
+        "title": "^Rhythmbox$"
+       }
+    ],
+    "type": "con"
+}
+

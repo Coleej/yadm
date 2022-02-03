@@ -679,6 +679,7 @@ assign [class="Evolution"] → "$ws1"
 # Chat
 assign [class="Signal"] → "$ws2"
 assign [class="TelegramDesktop"] → "$ws2"
+assign [class="whatsapp-for-linux"] → "$ws2"
 
 # Web
 assign [class="FirefoxStartUp"] → "$ws4"
@@ -694,6 +695,7 @@ exec --no-startup-id "i3-msg 'workspace 3:<span> </span><span font_desc=\"Fira M
 exec "/usr/bin/evolution"
 exec "/opt/telegram/Telegram -- %u"
 exec "/snap/bin/signal-desktop"
+exec "/snap/bin/whatsapp-for-linux"
 exec "/usr/bin/rhythmbox"
 exec "/usr/bin/pavucontrol"
 exec "/usr/bin/blueman-manager"
