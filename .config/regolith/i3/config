@@ -677,9 +677,9 @@ workspace "$ws5" output HDMI-A-0
 assign [class="Evolution"] → "$ws1"
 
 # Chat
-assign [class="Signal"] → "$ws2"
-assign [class="TelegramDesktop"] → "$ws2"
-assign [class="whatsapp-for-linux"] → "$ws2"
+#assign [class="Signal"] → "$ws2"
+#assign [class="TelegramDesktop"] → "$ws2"
+#assign [class="whatsapp-for-linux"] → "$ws2"
 
 # Web
 assign [class="FirefoxStartUp"] → "$ws4"
@@ -690,7 +690,7 @@ assign [class="Alacritty" title="initTerm"] → "$ws5"
 # !! Hack to keep Pop-os theme workspace name within i3-msg call !! 
 
 # messaging apps workspace
-exec --no-startup-id "i3-msg 'workspace 2:<span> </span><span font_desc=\"Fira Mono Regular 11\">3 </span><span foreground=\"#4E9A06\"></span><span> </span>; append_layout ~/.config/regolith/i3/layouts/messaging-workspace.json'"
+exec --no-startup-id "i3-msg 'workspace 2:<span> </span><span font_desc=\"Fira Mono Regular 11\">2 </span><span foreground=\"#6ACAD8\"></span><span> </span>; append_layout ~/.config/regolith/i3/layouts/messaging-workspace.json'"
 
 # media workspace
 exec --no-startup-id "i3-msg 'workspace 3:<span> </span><span font_desc=\"Fira Mono Regular 11\">3 </span><span foreground=\"#4E9A06\"></span><span> </span>; append_layout ~/.config/regolith/i3/layouts/media-workspace.json'"
