@@ -1,5 +1,5 @@
 " << init >> {{{ 
-silent mkspell! ~/.vim/spell/en.utf-8.add
+"silent mkspell! ~/.vim/spell/en.utf-8.add
 " }}}
 
 " << vim-plug >>  {{{
@@ -727,7 +727,7 @@ if has("autocmd")
   " python autocmd group ------------------------------------------- {{{
   :augroup filetype_python
     :autocmd!
-		:au BufWritePre *.py call FormatPython()
+"		:au BufWritePre *.py call FormatPython()
 "		:au BufWritePre *.py execute ':Black'
 "		:au BufWritePre *.py execute ':CocCommand python.sortImports'
 		:au FileType vimwiki let maplocalleader="\'"
@@ -978,7 +978,7 @@ endif
 
 " }}}
 
-" << custom funcs >> {{{
+" << custom functions >> {{{
 
 " format python
 function FormatPython()
