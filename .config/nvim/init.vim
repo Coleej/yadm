@@ -13,7 +13,8 @@ silent! if plug#begin('~/.config/nvim/plugged')
 
 	" UI {{{
 	
-	Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle'}
+"	Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle'}
+	Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle'}
 	Plug 'Xuyuanp/nerdtree-git-plugin'
 	Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
@@ -603,7 +604,7 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 
 " git plugin
-let g:NERDTreeIndicatorMapCustom = {
+let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Modified"  : "✹ ",
     \ "Staged"    : "✚ ",
     \ "Untracked" : "✭ ",
