@@ -728,7 +728,8 @@ if has("autocmd")
   " python autocmd group ------------------------------------------- {{{
   :augroup filetype_python
     :autocmd!
-"		:au BufWritePre *.py call FormatPython()
+		:au FileType python let b:coc_root_patterns = ['.git', '.venv', 'setup.cfg', 'setup.py']
+		:au BufWritePre *.py call FormatPython()
 "		:au BufWritePre *.py execute ':Black'
 "		:au BufWritePre *.py execute ':CocCommand python.sortImports'
 		:au FileType vimwiki let maplocalleader="\'"
