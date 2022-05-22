@@ -10,3 +10,4 @@ qbcflist.bcf
 E_reuse.bcf
 q_reuse.bcf
 __pycache__
+.vim/
