@@ -44,3 +44,4 @@ confirmation=off
 detection=off
 verbose=off
 journal.info=off
+news.version=2.6.0

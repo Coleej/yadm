@@ -1,0 +1,49 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+extends py
+
+snippet defm "function for MM coastaltoolbox" b
+def ${1:fname}(${2:args}):
+	"""
+	$1($2)
+
+	INPUT
+		${3:Input definition}
+	
+	OUTPUT
+		${4:Output definition}
+	
+	DESCRIPTION
+		${5:Short description of function with references if applicable.}
+	
+	NOTE
+		${6:Notes on usage}
+	
+	"""
+
+	$0
+endsnippet

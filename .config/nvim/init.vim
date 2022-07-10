@@ -1,5 +1,5 @@
 " << init >> {{{ 
-silent mkspell! ~/.vim/spell/en.utf-8.add
+"silent mkspell! ~/.vim/spell/en.utf-8.add
 " }}}
 
 " << vim-plug >>  {{{
@@ -13,7 +13,8 @@ silent! if plug#begin('~/.config/nvim/plugged')
 
 	" UI {{{
 	
-	Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle'}
+"	Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle'}
+	Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle'}
 	Plug 'Xuyuanp/nerdtree-git-plugin'
 	Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
@@ -603,7 +604,7 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 
 " git plugin
-let g:NERDTreeIndicatorMapCustom = {
+let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Modified"  : "✹ ",
     \ "Staged"    : "✚ ",
     \ "Untracked" : "✭ ",
@@ -727,6 +728,7 @@ if has("autocmd")
   " python autocmd group ------------------------------------------- {{{
   :augroup filetype_python
     :autocmd!
+		:au FileType python let b:coc_root_patterns = ['.git', '.venv', 'setup.cfg', 'setup.py']
 		:au BufWritePre *.py call FormatPython()
 "		:au BufWritePre *.py execute ':Black'
 "		:au BufWritePre *.py execute ':CocCommand python.sortImports'
@@ -978,7 +980,7 @@ endif
 
 " }}}
 
-" << custom funcs >> {{{
+" << custom functions >> {{{
 
 " format python
 function FormatPython()
