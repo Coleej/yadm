@@ -13,7 +13,6 @@ silent! if plug#begin('~/.config/nvim/plugged')
 
 	" UI {{{
 	
-"	Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle'}
 	Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle'}
 	Plug 'Xuyuanp/nerdtree-git-plugin'
 	Plug 'vim-airline/vim-airline'
@@ -55,7 +54,6 @@ silent! if plug#begin('~/.config/nvim/plugged')
 	Plug 'rbong/vim-flog'
 " 	Plug 'SirVer/ultisnips'
 	Plug 'honza/vim-snippets'
-	Plug 'w0rp/ale'
 	Plug 'junegunn/fzf', { 'dir': '~/.config/fzf', 'do': 'bash ~/.config/fzf/install --all --xdg --no-bash --no-zsh' }
 	Plug 'junegunn/fzf.vim'
 	Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
@@ -521,51 +519,6 @@ let g:fzf_action = {
 	\ 'ctrl-v': 'vsplit' }
 
 nnoremap <leader>F :FZF<cr>
-
-" }}}
-
-" << ALE >> {{{
-
-let g:ale_linters = {
-	\ 'python': ['black', 'flake8'],
-	\ 'javascript': ['eslint', 'tsserver', 'prettier'],
-	\ 'typescript': ['eslint', 'tsserver'],
-	\ 'css': ['prettier'],
-	\ 'html': ['prettier'],
-	\ 'tex': ['chktex','lacheck'],
-	\ 'vimwiki': []
-\}
-
-let g:ale_fixers = {
-	\ 'python': ['black',
-	\            'isort',
-	\						 'add_blank_lines_for_python_control_statements',
-	\						 'trim_whitespace'],
-	\ 'javascript': ['eslint', 'prettier'],
-	\ 'typescript': ['eslint', 'prettier'],
-	\ 'css': ['prettier'],
-	\ 'html': ['prettier'],
-	\ 'tex': ['latexindent',
-	\					'remove_trailing_lines',
-	\					'trim_whitespace'],
-	\ 'sh': ['shfmt', 'trim_whitespace'],
-	\ 'fish': ['remove_trailing_lines', 'trim_whitespace']
-\}
-
-" python
-let g:ale_python_black_use_global = 1
-let g:ale_python_isort_use_global = 1
-
-" interesting options (set to default)
-let g:ale_cursor_detail = 0
-let g:ale_fix_on_save = 0
-let g:ale_lint_on_insert_leave = 0
-let g:ale_change_sign_column_color = 0
-let g:ale_sign_column_always = 0
-
-nmap <leader>ah <Plug>(ale_hover)
-nmap <leader>af <Plug>(ale_fix)
-nmap <leader>ad <Plug>(ale_go_to_definition)
 
 " }}}
 
