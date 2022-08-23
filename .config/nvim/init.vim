@@ -52,7 +52,6 @@ silent! if plug#begin('~/.config/nvim/plugged')
 	
 	Plug 'junegunn/vim-plug'
 	Plug 'rbong/vim-flog'
-" 	Plug 'SirVer/ultisnips'
 	Plug 'honza/vim-snippets'
 	Plug 'junegunn/fzf', { 'dir': '~/.config/fzf', 'do': 'bash ~/.config/fzf/install --all --xdg --no-bash --no-zsh' }
 	Plug 'junegunn/fzf.vim'
@@ -302,7 +301,7 @@ endfunction
 
 " Use <c-space> to trigger completion.
 "inoremap <silent><expr> <c-space> coc#refresh()
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>"
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 
 
 " Use <c-space> to trigger completion
@@ -505,6 +504,9 @@ let g:AutoClosePairs_add = "$ % <>"
 
 " << vim-airline >> {{{
 
+let g:airline#extensions#coc#enabled = 1
+let g:airline#extensions#coc#show_coc_status = 1
+let g:airline#extensions#virtualenv#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='murmur'
