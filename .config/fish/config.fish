@@ -53,10 +53,7 @@ bind \ei fish_vi_key_bindings
 bind -M insert \ed fish_default_key_bindings
 
 # >>> conda initialize >>>
-switch (hostname)
-  case CHLCLJ-WN-1236J
-    # !! Contents within this block are managed by 'conda init' !!
-    eval /home/cody/anaconda3/bin/conda "shell.fish" "hook" $argv | source
-end
+# !! Contents within this block are managed by 'conda init' !!
+eval /home/cody/.mambaforge/bin/conda "shell.fish" "hook" $argv | source
 # <<< conda initialize <<<
 
