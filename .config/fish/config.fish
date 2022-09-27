@@ -54,6 +54,8 @@ bind -M insert \ed fish_default_key_bindings
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-eval /home/cody/.mambaforge/bin/conda "shell.fish" "hook" $argv | source
+if test -d ~/.mambaforge
+  eval /home/cody/.mambaforge/bin/conda "shell.fish" "hook" $argv | source
+end
 # <<< conda initialize <<<
 
