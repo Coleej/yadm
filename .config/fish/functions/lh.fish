@@ -1,3 +1,3 @@
-function lh --wraps='ll -ltr' --description 'alias lh=ll -ltr'
-  ll -ltr $argv; 
+function lh --wraps='ll -trh' --description 'alias lh=ll -trh'
+  ll -trh $argv; 
 end
