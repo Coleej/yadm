@@ -1,0 +1,12 @@
+{
+	// Python
+	"python.linting.flake8Enabled": true,
+	"python.linting.flake8Args": ["--extend-ignore E203", "--max-line-length 88"],
+	"python.venvPath": "/home/cody/.mambaforge/envs",
+	"python.formatting.provider": "black",
+
+	// Text extensions
+	"coc.source.word.filetypes": ["text", "markdown"],
+	"cSpell.enabledLanguageIds": ["asciidoc", "latex", "markdown", "text"]
+
+}
