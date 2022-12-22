@@ -484,7 +484,7 @@ c.NotebookApp.default_url = "/lab?reset"
 # c.ContentsManager.checkpoints_class = 'notebook.services.contents.checkpoints.Checkpoints'
 
 ##
-# c.ContentsManager.checkpoints_kwargs = {}
+c.ContentsManager.checkpoints_kwargs = {"root_dir": "/tmp"}
 
 ## Glob patterns to hide in file and directory listings.
 # c.ContentsManager.hide_globs = ['__pycache__', '*.pyc', '*.pyo', '.DS_Store', '*.so', '*.dylib', '*~']

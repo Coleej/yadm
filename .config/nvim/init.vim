@@ -661,6 +661,10 @@ let g:vimtex_fold_levelmarker='◊'
 
 " }}}
 
+" << vim-csv >> {{{
+
+" }}}
+
 " }}}
 
 "  << abbreviations >> {{{
