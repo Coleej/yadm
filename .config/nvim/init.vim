@@ -700,12 +700,14 @@ let g:vimtex_quickfix_ignore_filters = [
 			\ '.*caption.*'
 \]
 
-let g:vimtex_compiler_latexmk = {
-	\ 'build_dir' : './build',
-	\ 'options' : [
-	\ '-unique'
-	\ ],
-	\}
+" let g:vimtex_compiler_latexmk = {
+" 	\ 'build_dir' : './build',
+" 	\ 'options' : [
+" 	\ '-unique'
+" 	\ ],
+" 	\}
+
+let g:vimtex_compiler_latexmk = { 'build_dir': './build' }
 
 let g:vimtex_fold_enabled=0
 let g:vimtex_fold_levelmarker='◊'
