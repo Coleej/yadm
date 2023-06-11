@@ -80,9 +80,9 @@ silent! if plug#begin('~/.config/nvim/plugged')
 
 	" syntax highlighting {{{
 	
-	Plug 'leafgarland/typescript-vim'
-  Plug 'dag/vim-fish'
-	Plug 'glench/Vim-Jinja2-Syntax'
+	" Plug 'leafgarland/typescript-vim'
+  " Plug 'dag/vim-fish'
+	" Plug 'glench/Vim-Jinja2-Syntax'
 "	Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}  " python
 	
 	" }}}
@@ -90,7 +90,7 @@ silent! if plug#begin('~/.config/nvim/plugged')
 	" tree-sitter {{{
 	
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-	Plug 'p00f/nvim-ts-rainbow'
+	Plug 'hiphish/nvim-ts-rainbow2'
 	
 	" }}}
 
@@ -106,7 +106,22 @@ lua << EOF
 -- Tree-Sitter
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all" (the five listed parsers should always be installed)
-  ensure_installed = { "c", "lua", "vim", "vimdoc", "query" },
+  ensure_installed = {
+		"c",
+		"lua",
+		"vim",
+		"vimdoc",
+		"query" ,
+		"python",
+		"fish",
+		"dockerfile",
+		"fortran",
+		"latex",
+		"regex",
+		"typescript",
+		"yaml",
+		"markdown"
+		},
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
@@ -116,7 +131,7 @@ require'nvim-treesitter.configs'.setup {
   auto_install = true,
 
   highlight = {
-    enable = true
+    enable = true,
 
     -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
     -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
@@ -126,16 +141,28 @@ require'nvim-treesitter.configs'.setup {
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
     -- Using this option may slow down your editor, and you may see some duplicate highlights.
     -- Instead of true it can also be a list of languages
+		additional_vim_regex_highlighting = false
+  },
+
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "gnn", -- set to `false` to disable one of the mappings
+      node_incremental = "grn",
+      scope_incremental = "grc",
+      node_decremental = "grm",
+    },
   },
 
 	rainbow = {
-    enable = true,
-    -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
-    extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-    max_file_lines = nil, -- Do not enable for files with more than n lines, int
-    -- colors = {}, -- table of hex strings
-    -- termcolors = {} -- table of colour name strings
-  }
+		enable = true,
+		-- list of languages you want to disable the plugin for
+		disable = {  },
+		-- Which query to use for finding delimiters
+		query = 'rainbow-parens',
+		-- Highlight the entire buffer all at once
+		strategy = require('ts-rainbow').strategy.global,
+	}
 }
 
 EOF
@@ -300,7 +327,6 @@ set formatoptions+=j
 set nocompatible
 set shell=/bin/bash
 set hlsearch
-set foldmethod=syntax
 set incsearch
 silent! set belloff=all
 set smartcase
@@ -324,6 +350,10 @@ augroup CloseLoclistWindowGroup
 	autocmd!
 	autocmd QuitPre * if empty(&buftype) | lclose | endif
 augroup END
+
+" folding
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
 
 " }}}
 
@@ -750,7 +780,6 @@ if has("autocmd")
 		:au Filetype python setlocal expandtab
 		:au Filetype python setlocal nu
 		:au Filetype python setlocal fileformat=unix
-		:au FileType python setlocal foldmethod=indent
 		:au FileType python setlocal completeopt-=preview
 		:au FileType python let g:SimpylFold_docstring_preview = 1
 	
@@ -914,7 +943,7 @@ if has("autocmd")
     " :au FileType fortran setlocal bs=2
     " :au FileType fortran setlocal ignorecase
     " :au FileType fortran setlocal smartcase
-    :au FileType fortran let fortran_fold=1
+    " :au FileType fortran let fortran_fold=1
     " :au FileType fortran let fortran_fold_conditionals=1
     " :au FileType fortran let fortran_fold_multilinecomments=1
     :au FileType fortran let fortran_more_precise=1
