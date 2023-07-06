@@ -17,4 +17,7 @@ return require('packer').startup(function(use)
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
 
+	-- color schemes
+	use 'marko-cerovac/material.nvim'
+
 end)
