@@ -10,12 +10,17 @@ return require('packer').startup(function(use)
 	
 	-- Treesitter
 	use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+	use("hiphish/nvim-ts-rainbow2")
+	use("nvim-treesitter/nvim-treesitter-context")
 
 	-- Telescope
 	use {
 		'nvim-telescope/telescope.nvim', tag = '0.1.1',
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
+
+	-- misc
+	use("chrisbra/csv.cim")
 
 	-- color schemes
 	use 'marko-cerovac/material.nvim'
