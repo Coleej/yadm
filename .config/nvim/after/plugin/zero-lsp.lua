@@ -2,7 +2,11 @@ local lsp = require("lsp-zero").preset({})
 
 lsp.on_attach(function(client, bufnr)
 	lsp.default_keymaps({ buffer = bufnr })
-	lsp.buffer_autoformat()
+
+	if client.supports_method("textDocument/formatting") then
+		require("lsp-format").on_attach(client)
+	end
+	--lsp.buffer_autoformat()
 
 	vim.keymap.set({ "n" }, "U", "<cmd>lua vim.lsp.buf.hover()<CR>", { noremap = true })
 	vim.keymap.set({ "n", "x" }, "<F9>", function()
@@ -10,7 +14,10 @@ lsp.on_attach(function(client, bufnr)
 	end, { buffer = bufnr })
 end)
 
+
 --[[
+lsp.ensure_installed({})
+
 lsp.set_sign_icons({
 	error = "✘",
 	warn = "▲",
