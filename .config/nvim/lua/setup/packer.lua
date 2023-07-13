@@ -31,23 +31,26 @@ return require("packer").startup(function(use)
 	-- LSP
 	use "lukas-reineke/lsp-format.nvim"
 	use {
-		'VonHeikemen/lsp-zero.nvim',
-		branch = 'v2.x',
+		"VonHeikemen/lsp-zero.nvim",
+		branch = "v2.x",
 		requires = {
 			-- LSP Support
-			{ 'neovim/nvim-lspconfig' }, -- Required
+			{ "neovim/nvim-lspconfig" }, -- Required
 			{                         -- Optional
-				'williamboman/mason.nvim',
+				"williamboman/mason.nvim",
 				run = function()
-					pcall(vim.cmd, 'MasonUpdate')
+					pcall(vim.cmd, "MasonUpdate")
 				end,
 			},
-			{ 'williamboman/mason-lspconfig.nvim' }, -- Optional
+			{ "williamboman/mason-lspconfig.nvim" }, -- Optional
 
 			-- Autocompletion
-			{ 'hrsh7th/nvim-cmp' },  -- Required
-			{ 'hrsh7th/cmp-nvim-lsp' }, -- Required
-			{ 'L3MON4D3/LuaSnip' },  -- Required
+			{ "hrsh7th/nvim-cmp" },      -- Required
+			{ "hrsh7th/cmp-nvim-lsp" },  -- Required
+			{ "L3MON4D3/LuaSnip" },      -- Required
+			{ "saadparwaiz1/cmp_luasnip" }, -- optional
+			{ "hrsh7th/cmp-buffer" },    -- optional
+			{ "hrsh7th/cmp-path" },      -- optional
 		}
 	}
 end)

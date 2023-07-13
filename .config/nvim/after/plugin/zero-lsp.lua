@@ -1,4 +1,6 @@
-local lsp = require("lsp-zero").preset({})
+local lsp = require("lsp-zero").preset({
+	manage_nvim_cmp = { set_sources = "recommended" }
+})
 
 lsp.on_attach(function(client, bufnr)
 	lsp.default_keymaps({ buffer = bufnr })
@@ -13,7 +15,6 @@ lsp.on_attach(function(client, bufnr)
 		vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
 	end, { buffer = bufnr })
 end)
-
 
 --[[
 lsp.ensure_installed({})
@@ -30,3 +31,18 @@ lsp.set_sign_icons({
 require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
 
 lsp.setup()
+
+-- custom cmp set up
+local cmp = require("cmp")
+local cmp_action = require("lsp-zero").cmp_action()
+
+cmp.setup({
+	mapping = {
+		["<Tab>"] = cmp_action.luasnip_supertab(),
+		["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
+	},
+	window = {
+		completion = cmp.config.window.bordered(),
+		documentation = cmp.config.window.bordered(),
+	}
+})
