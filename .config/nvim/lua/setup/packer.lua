@@ -53,4 +53,10 @@ return require("packer").startup(function(use)
 			{ "hrsh7th/cmp-path" },      -- optional
 		}
 	}
+
+	-- autopairs
+	use {
+		"windwp/nvim-autopairs",
+		config = function() require("nvim-autopairs").setup {} end
+	}
 end)
