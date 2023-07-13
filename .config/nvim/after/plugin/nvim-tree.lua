@@ -21,4 +21,4 @@ require("nvim-tree").setup({
 
 local set = vim.keymap.set
 
-set("n", "<leader>d", ":NvimTreeToggle<CR>", { noremap = true })
+set("n", "<leader>d", ":NvimTreeToggle<CR>", { silent = true, noremap = true })

@@ -32,7 +32,7 @@ require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
 
 lsp.setup()
 
--- custom cmp set up
+-- custom cmp set up after lsp-zero
 local cmp = require("cmp")
 local cmp_action = require("lsp-zero").cmp_action()
 
@@ -46,3 +46,10 @@ cmp.setup({
 		documentation = cmp.config.window.bordered(),
 	}
 })
+
+-- autopairs
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+cmp.event:on(
+	"confirm_done",
+	cmp_autopairs.on_confirm_done()
+)
