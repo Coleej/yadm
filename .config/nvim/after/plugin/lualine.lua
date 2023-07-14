@@ -1,12 +1,12 @@
 require("lualine").setup {
 	options = {
 		icons_enabled = true,
-		theme = "material",
-		component_separators = { left = "", right = "" },
-		section_separators = { left = "", right = "" },
+		theme = "everforest",
+		component_separators = { left = "", right = "" }, -- 
+		section_separators = { left = "", right = "" }, --   
 		disabled_filetypes = {
-			statusline = { "NvimTree" },
-			winbar = { "NvimTree" },
+			statusline = {},
+			winbar = {},
 		},
 		ignore_focus = {},
 		always_divide_middle = true,
@@ -36,5 +36,5 @@ require("lualine").setup {
 	tabline = {},
 	winbar = {},
 	inactive_winbar = {},
-	extensions = {}
+	extensions = { "fugtive", "nvim-tree" }
 }

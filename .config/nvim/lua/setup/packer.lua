@@ -65,4 +65,8 @@ return require("packer").startup(function(use)
 		"nvim-lualine/lualine.nvim",
 		requires = { "nvim-tree/nvim-web-devicons", opt = true }
 	}
+
+	-- tpope
+	use "tpope/vim-fugitive"
+	use "tpope/vim-surround"
 end)
