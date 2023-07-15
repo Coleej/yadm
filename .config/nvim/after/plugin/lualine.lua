@@ -1,3 +1,19 @@
+local function split(input, delimiter)
+	local arr = {}
+	_ = string.gsub(input, '[^' .. delimiter .. ']+', function(w) table.insert(arr, w) end)
+	return arr
+end
+
+local function get_venv()
+	local venv = vim.env.VIRTUAL_ENV
+	if venv then
+		local params = split(venv, '/')
+		return '(venv:' .. params[#params] .. ')'
+	else
+		return ''
+	end
+end
+
 require("lualine").setup {
 	options = {
 		icons_enabled = true,
@@ -21,7 +37,7 @@ require("lualine").setup {
 		lualine_a = { "mode" },
 		lualine_b = { "branch", "diff", "diagnostics" },
 		lualine_c = { "filename" },
-		lualine_x = { "encoding", "fileformat", "filetype" },
+		lualine_x = { get_venv, "filetype", "fileformat", "encoding" },
 		lualine_y = { "progress" },
 		lualine_z = { "location" }
 	},

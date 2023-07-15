@@ -79,6 +79,8 @@ set("n", "N", "NzzzN", _silent)
 
 
 -- quickfix/location list
+set("n", "<leader>l", "<cmd>lua vim.diagnostic.setloclist()<CR>", _nmap_silent)
+set("n", "<leader>q", "<cmd>lua vim.diagnostic.setqflist()<CR>", _nmap_silent)
 set("n", "<C-n>", "<cmd>cnext<CR>zz", _nmap_silent)
 set("n", "<C-p>", "<cmd>cprev<CR>zz", _nmap_silent)
 set("n", "<leader>n", "<cmd>lnext<CR>zz", _nmap_silent)
