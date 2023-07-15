@@ -76,3 +76,10 @@ set("v", "K", ":m '<-2<CR>gv=gv", _nmap_silent)
 -- search
 set("n", "n", "nzzzv", _silent)
 set("n", "N", "NzzzN", _silent)
+
+
+-- quickfix/location list
+set("n", "<C-n>", "<cmd>cnext<CR>zz", _nmap_silent)
+set("n", "<C-p>", "<cmd>cprev<CR>zz", _nmap_silent)
+set("n", "<leader>n", "<cmd>lnext<CR>zz", _nmap_silent)
+set("n", "<leader>p", "<cmd>lprev<CR>zz", _nmap_silent)
