@@ -77,4 +77,10 @@ return require("packer").startup(function(use)
 	-- tpope
 	use "tpope/vim-fugitive"
 	use "tpope/vim-surround"
+
+	-- Vimwiki [need to set options before loading plugin]
+	vim.g.vimwiki_folding = "syntax"
+	local wiki_root = { path = "~/Nextcloud/vimwiki", path_html = "~/Nextcloud/vimwiki/html" }
+	vim.g.vimwiki_list = { wiki_root }
+	use "vimwiki/vimwiki"
 end)
