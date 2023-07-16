@@ -1,3 +1,5 @@
+vim.lsp.set_log_level("DEBUG")
+
 local lsp = require("lsp-zero").preset({
 	manage_nvim_cmp = { set_sources = "recommended" }
 })
@@ -15,17 +17,6 @@ lsp.on_attach(function(client, bufnr)
 		vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
 	end, { buffer = bufnr })
 end)
-
---[[
-lsp.ensure_installed({})
-
-lsp.set_sign_icons({
-	error = "✘",
-	warn = "▲",
-	hint = "⚑",
-	info = "»"
-})
---]]
 
 -- (Optional) Configure lua language server for neovim
 require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
@@ -53,3 +44,12 @@ cmp.event:on(
 	"confirm_done",
 	cmp_autopairs.on_confirm_done()
 )
+
+-- formatting
+local null_ls = require("null-ls")
+null_ls.setup({
+	sources = {
+		null_ls.builtins.formatting.black,
+		null_ls.builtins.formatting.isort
+	}
+})

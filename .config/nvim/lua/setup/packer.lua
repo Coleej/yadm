@@ -60,6 +60,8 @@ return require("packer").startup(function(use)
 		}
 	}
 
+	use "jose-elias-alvarez/null-ls.nvim"
+
 	-- autopairs
 	use {
 		"windwp/nvim-autopairs",

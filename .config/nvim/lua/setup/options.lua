@@ -1,4 +1,5 @@
 local set = vim.opt
+local g = vim.g
 
 set.shell = "/bin/bash"
 set.belloff = "all"
@@ -21,3 +22,5 @@ set.incsearch = true
 set.updatetime = 50
 
 set.scrolloff = 8
+
+g.python3_host_prog = "~/.config/virtualenvs/pynvim/bin/python3"
