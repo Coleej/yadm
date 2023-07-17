@@ -53,13 +53,13 @@ return require("packer").startup(function(use)
 			-- Autocompletion
 			{ "hrsh7th/nvim-cmp" },      -- Required
 			{ "hrsh7th/cmp-nvim-lsp" },  -- Required
-			{ "L3MON4D3/LuaSnip" },      -- Required
+			{ "L3MON4D3/LuaSnip" },
 			{ "saadparwaiz1/cmp_luasnip" }, -- optional
 			{ "hrsh7th/cmp-buffer" },    -- optional
 			{ "hrsh7th/cmp-path" },      -- optional
 		}
 	}
-
+	use "rafamadriz/friendly-snippets"
 	use "jose-elias-alvarez/null-ls.nvim"
 
 	-- autopairs
