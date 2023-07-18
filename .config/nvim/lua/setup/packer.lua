@@ -83,4 +83,7 @@ return require("packer").startup(function(use)
 	local wiki_root = { path = "~/Nextcloud/vimwiki", path_html = "~/Nextcloud/vimwiki/html" }
 	vim.g.vimwiki_list = { wiki_root }
 	use "vimwiki/vimwiki"
+
+	-- Syntax (outside Treesitter)
+	use "Glench/Vim-Jinja2-Syntax"
 end)
