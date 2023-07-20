@@ -77,6 +77,7 @@ return require("packer").startup(function(use)
 	-- tpope
 	use "tpope/vim-fugitive"
 	use "tpope/vim-surround"
+	use "tpope/vim-unimpaired"
 
 	-- Vimwiki [need to set options before loading plugin]
 	vim.g.vimwiki_folding = "syntax"

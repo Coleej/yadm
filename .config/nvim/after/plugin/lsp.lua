@@ -58,6 +58,10 @@ null_ls.setup({
 		null_ls.builtins.formatting.black,
 		null_ls.builtins.formatting.isort,
 		null_ls.builtins.formatting.djlint,
+		null_ls.builtins.formatting.json_tool.with({
+			command = "python3",
+			args = { "-m", "json.tool", "--indent", "2" }
+		}),
 		null_ls.builtins.diagnostics.djlint
 	}
 })
