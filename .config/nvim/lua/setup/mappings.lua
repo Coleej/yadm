@@ -53,6 +53,7 @@ set("n", "<leader>vw", "<C-w>t>C-w>H", _silent)
 -- terminal
 set("n", "<leader>t", ":execute 'bel 15split term://fish'<CR>", _nmap_silent)
 set("n", "<leader>vt", ":execute 'vsplit term://fish'<CR>", _nmap_silent)
+set("t", "<Esc>", "<C-\\><C-n>", _nmap)
 set("t", "]g", "<C-\\><C-N>:tabn<CR>", _nmap)
 set("t", "[g", "<C-\\><C-N>:tabp<CR>", _nmap)
 set("t", "]b", "<C-\\><C-N>:bnext<CR>", _nmap)

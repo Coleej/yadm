@@ -21,6 +21,15 @@ end)
 -- (Optional) Configure lua language server for neovim
 require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
 
+-- html
+--Enable (broadcasting) snippet capability for completion
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+require 'lspconfig'.html.setup {
+	capabilities = capabilities,
+}
+
 lsp.setup()
 
 -- custom cmp set up after lsp-zero
