@@ -63,10 +63,8 @@ return require("packer").startup(function(use)
 	use "jose-elias-alvarez/null-ls.nvim"
 
 	-- autopairs
-	use {
-		"windwp/nvim-autopairs",
-		config = function() require("nvim-autopairs").setup {} end
-	}
+	use "windwp/nvim-autopairs"
+	use "windwp/nvim-ts-autotag"
 
 	-- status line
 	use {
@@ -84,7 +82,4 @@ return require("packer").startup(function(use)
 	local wiki_root = { path = "~/Nextcloud/vimwiki", path_html = "~/Nextcloud/vimwiki/html" }
 	vim.g.vimwiki_list = { wiki_root }
 	use "vimwiki/vimwiki"
-
-	-- Syntax (outside Treesitter)
-	use "Glench/Vim-Jinja2-Syntax"
 end)

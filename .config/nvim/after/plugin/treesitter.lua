@@ -1,7 +1,8 @@
-require 'nvim-treesitter.configs'.setup {
+require "nvim-treesitter.configs".setup {
 	-- A list of parser names, or "all" (the five listed parsers should always be installed)
 	ensure_installed = { "bash", "c", "comment", "css", "dockerfile", "fish", "fortran", "git_config", "git_rebase",
-		"gitattributes", "gitcommit", "gitignore", "html", "javascript", "json", "julia", "lua", "luadoc", "make", "matlab",
+		"gitattributes", "gitcommit", "gitignore", "html", "htmldjango", "javascript", "json", "julia", "lua", "luadoc",
+		"make", "matlab",
 		"python",
 		"typescript", "vim", "vimdoc", "query", "regex", "rust", "toml", "yaml" },
 
@@ -15,7 +16,7 @@ require 'nvim-treesitter.configs'.setup {
 	highlight = {
 		enable = true,
 		additional_vim_regex_highlighting = false,
-		disable = { "jinja.html" }
+		--disable = { "jinja.html" }
 	},
 
 	rainbow = {
@@ -26,7 +27,7 @@ require 'nvim-treesitter.configs'.setup {
 		query = 'rainbow-parens',
 		-- Highlight the entire buffer all at once
 		strategy = require('ts-rainbow').strategy.global
-	}
+	},
 }
 
 require 'treesitter-context'.setup {
