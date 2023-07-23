@@ -1,8 +1,13 @@
-vim.lsp.set_log_level("DEBUG")
-
 local lsp = require("lsp-zero").preset({
 	manage_nvim_cmp = { set_sources = "recommended" }
 })
+
+-- autoformat (but disable python)
+require("lsp-format").setup{
+	python = {
+		exclude = { "pylsp" }
+	}
+}
 
 lsp.on_attach(function(client, bufnr)
 	lsp.default_keymaps({ buffer = bufnr })
@@ -10,7 +15,6 @@ lsp.on_attach(function(client, bufnr)
 	if client.supports_method("textDocument/formatting") then
 		require("lsp-format").on_attach(client)
 	end
-	--lsp.buffer_autoformat()
 
 	vim.keymap.set({ "n" }, "U", "<cmd>lua vim.lsp.buf.hover()<CR>", { noremap = true })
 	vim.keymap.set({ "n", "x" }, "<F9>", function()
@@ -26,7 +30,7 @@ require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-require 'lspconfig'.html.setup {
+require("lspconfig").html.setup {
 	capabilities = capabilities,
 }
 
