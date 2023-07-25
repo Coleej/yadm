@@ -3,7 +3,7 @@ local lsp = require("lsp-zero").preset({
 })
 
 -- autoformat (but disable python)
-require("lsp-format").setup{
+require("lsp-format").setup {
 	python = {
 		exclude = { "pylsp" }
 	}
@@ -32,6 +32,18 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 require("lspconfig").html.setup {
 	capabilities = capabilities,
+}
+
+require("lspconfig").pylsp.setup {
+	settings = {
+		pylsp = {
+			plugins = {
+				pycodestyle = {
+					maxLineLength = 93
+				}
+			}
+		}
+	}
 }
 
 lsp.setup()
