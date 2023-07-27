@@ -3,7 +3,7 @@ local npairs = require("nvim-autopairs")
 npairs.setup {}
 
 npairs.add_rules({
-	Rule("%", "%", "htmldjango")
+	Rule("%", "%", { "htmldjango", "html.jinja" })
 			:with_move(function(opts) return opts.char == "%" end)
 })
 
