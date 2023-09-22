@@ -1,38 +1,38 @@
 function clean_dfm
 	set total $argv[1]
 
-	rm dflowfm/unstruc.dia &>/dev/null
+	set files **/unstruc.dia; rm -f $files &>/dev/null
 	
-	set files dflowfm/DFM_interpreted_idomain_*; rm -f $files &>/dev/null
-	set files dflowfm/*_0*_net.nc; rm -f $files &>/dev/null
-	set files dflowfm/*_0*.mdu; rm -f $files &>/dev/null
+	set files **/DFM_interpreted_idomain_*; rm -f $files &>/dev/null
+	set files **/*_0*_net.nc; rm -f $files &>/dev/null
+	set files **/*_0*.mdu; rm -f $files &>/dev/null
 	
-	rm wave/BOTNOW &>/dev/null
-	rm wave/INPUT &>/dev/null
-	rm wave/PET0.RegridWeightGen.Log &>/dev/null
-	rm wave/esmf_bat.log &>/dev/null
-	rm wave/norm_end &>/dev/null
-	rm wave/swan.inp &>/dev/null
-	rm wave/PRINT &>/dev/null
+	set files **/BOTNOW; rm -f $files &>/dev/null
+	set files **/INPUT; rm -f $files &>/dev/null
+	set files **/PET0.RegridWeightGen.Log; rm -f $files &>/dev/null
+	set files **/esmf_bat.log; rm -f $files &>/dev/null
+	set files **/norm_end; rm -f $files &>/dev/null
+	set files **/swan.inp; rm -f $files &>/dev/null
+	set files **/PRINT; rm -f $files &>/dev/null
 	
-	set files wave/NEST*; rm -f $files &>/dev/null
-	set files wave/SWANIN_*; rm -f $files &>/dev/null
-	set files wave/SWANOUT*; rm -f $files &>/dev/null
-	set files wave/TMP_*; rm -f $files &>/dev/null
-	set files wave/*.prt; rm -f $files &>/dev/null
-	set files wave/*.swn; rm -f $files &>/dev/null
+	set files **/NEST*; rm -f $files &>/dev/null
+	set files **/SWANIN_*; rm -f $files &>/dev/null
+	set files **/SWANOUT*; rm -f $files &>/dev/null
+	set files **/TMP_*; rm -f $files &>/dev/null
+	set files **/*.prt; rm -f $files &>/dev/null
+	set files **/*.swn; rm -f $files &>/dev/null
 	
 	if $total = true
-		rm -rf dflowfm/output &>/dev/null
+		set files **/output; rm -rf $files &>/dev/null
 		
-		rm wave/swan_bat.log &>/dev/null
+		set files **/swan_bat.log; rm -f $files &>/dev/null
 		
-		set files wave/*.sp1; rm -f $files &>/dev/null
-		set files wave/*.sp2; rm -f $files &>/dev/null
-		set files wave/wavh-*; rm -f $files &>/dev/null
-		set files wave/wavm-*; rm -f $files &>/dev/null
-		set files wave/*.tab; rm -f $files &>/dev/null
-		set files wave/swn-diag.*; rm -f $files &>/dev/null
+		set files **/*n*.sp1; rm -f $files &>/dev/null
+		set files **/*n*.sp2; rm -f $files &>/dev/null
+		set files **/wavh-*; rm -f $files &>/dev/null
+		set files **/wavm-*; rm -f $files &>/dev/null
+		set files **/*.tab; rm -f $files &>/dev/null
+		set files **/swn-diag.*; rm -f $files &>/dev/null
 	end
 
 end
