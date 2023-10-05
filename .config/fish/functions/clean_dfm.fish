@@ -33,6 +33,9 @@ function clean_dfm
 		set files **/wavm-*; rm -f $files &>/dev/null
 		set files **/*.tab; rm -f $files &>/dev/null
 		set files **/swn-diag.*; rm -f $files &>/dev/null
+
+		set files **/*.h5; rm -f $files &>/dev/null
+		set files **/*.csv; rm -f $files &>/dev/null
 	end
 
 end
