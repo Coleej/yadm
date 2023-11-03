@@ -12,6 +12,7 @@ set.sw = 2
 set.diffopt:append({ "vertical", "indent-heuristic" })
 
 set.foldmethod = "expr"
+set.foldexpr = "nvim_treesitter#foldexpr()"
 
 set.nu = true
 set.relativenumber = true
