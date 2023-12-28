@@ -60,6 +60,7 @@ cmp.setup({
 		{ name = "luasnip" }
 	},
 	mapping = {
+		["<CR>"] = cmp.mapping.confirm({ select = false }),
 		["<Tab>"] = cmp_action.luasnip_supertab(),
 		["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
 	},

@@ -24,4 +24,4 @@ set.updatetime = 50
 
 set.scrolloff = 8
 
-g.python3_host_prog = "~/.config/virtualenvs/pynvim/bin/python3"
+--g.python3_host_prog = "~/.config/virtualenvs/pynvim/bin/python3"

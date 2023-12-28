@@ -8,6 +8,7 @@ function clean_dfm
 	set files **/*_0*.mdu; rm -f $files &>/dev/null
 	
 	set files **/BOTNOW; rm -f $files &>/dev/null
+	set files **/WINDNOW; rm -f $files &>/dev/null
 	set files **/INPUT; rm -f $files &>/dev/null
 	set files **/PET0.RegridWeightGen.Log; rm -f $files &>/dev/null
 	set files **/esmf_bat.log; rm -f $files &>/dev/null
