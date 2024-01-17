@@ -82,7 +82,7 @@ local plugins = {
 	"jose-elias-alvarez/null-ls.nvim",
 
 	-- autopairs
-	"windwp/nvim-autopairs",
+	{ "windwp/nvim-autopairs", event = "InsertEnter" },
 	"windwp/nvim-ts-autotag",
 
 	-- status line
