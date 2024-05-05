@@ -6,9 +6,12 @@ function clean_dfm
 	set files **/DFM_interpreted_idomain_*; rm -f $files &>/dev/null
 	set files **/*_0*_net.nc; rm -f $files &>/dev/null
 	set files **/*_0*.mdu; rm -f $files &>/dev/null
+	set files **/*_0*.cache; rm -f $files &>/dev/null
 	
 	set files **/BOTNOW; rm -f $files &>/dev/null
-	set files **/WINDNOW; rm -f $files &>/dev/null
+	set files **/WNDNOW; rm -f $files &>/dev/null
+	set files **/CURNOW; rm -f $files &>/dev/null
+	set files **/swaninit; rm -f $files &>/dev/null
 	set files **/INPUT; rm -f $files &>/dev/null
 	set files **/PET0.RegridWeightGen.Log; rm -f $files &>/dev/null
 	set files **/esmf_bat.log; rm -f $files &>/dev/null
@@ -17,6 +20,7 @@ function clean_dfm
 	set files **/PRINT; rm -f $files &>/dev/null
 	
 	set files **/NEST*; rm -f $files &>/dev/null
+	set files **/hot_*; rm -f $files &>/dev/null
 	set files **/SWANIN_*; rm -f $files &>/dev/null
 	set files **/SWANOUT*; rm -f $files &>/dev/null
 	set files **/TMP_*; rm -f $files &>/dev/null
