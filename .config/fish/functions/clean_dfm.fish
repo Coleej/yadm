@@ -41,6 +41,8 @@ function clean_dfm
 
 		set files **/*.h5; rm -f $files &>/dev/null
 		set files **/*.csv; rm -f $files &>/dev/null
+		set files **/*.sp2; rm -f $files &>/dev/null
+		set files **/*.sp1; rm -f $files &>/dev/null
 	end
 
 end
