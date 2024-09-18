@@ -709,3 +709,6 @@ exec "/usr/bin/alacritty -t initTerm"
 
 # Keybindings
 bindsym $mod+Shift+z split horizontal, layout tabbed
+
+# screenshots
+bindsym $mod+Print exec "/usr/bin/flameshot gui --delay 1000"
